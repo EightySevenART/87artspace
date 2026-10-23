@@ -102,6 +102,50 @@
     }
   }
 
+  /* ---------- Headings: big when they enter, shrink to normal, then the text appears ---------- */
+  var grows = [].slice.call(document.querySelectorAll(".grow"));
+  if (grows.length && !reduce) {
+    var gItems = grows.map(function (el) {
+      var group = el.closest("[data-grow-group]") || el.parentNode;
+      return { el: el, afters: group.querySelectorAll(".after"), cur: 0, shown: false, max: parseFloat(el.getAttribute("data-max")) || 1.6 };
+    });
+    var gRunning = false;
+    function gClamp(v) { return Math.min(1, Math.max(0, v)); }
+    function gEase(t) { return 1 - Math.pow(1 - t, 3); }
+    function gTarget(el) {
+      var r = el.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var mid = r.top + r.height / 2;      /* centre is not moved by the scale */
+      var start = vh * 0.98, end = vh * 0.5; /* big at the bottom edge, normal by mid-screen */
+      /* at the very end of the page everything must be settled */
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) return 1;
+      return gClamp((start - mid) / (start - end));
+    }
+    function gFrame() {
+      var busy = false;
+      var small = window.innerWidth < 760;
+      gItems.forEach(function (it) {
+        var t = gTarget(it.el);
+        var d = t - it.cur;
+        if (Math.abs(d) > 0.001) { it.cur += d * 0.1; busy = true; } else { it.cur = t; }
+        var m = small ? Math.min(it.max, 1.3) : it.max;
+        var s = m + (1 - m) * gEase(it.cur);
+        it.el.style.transform = "scale(" + s.toFixed(4) + ")";
+        if (!it.shown && it.cur > 0.7) {
+          it.shown = true;
+          it.afters.forEach(function (a) { a.classList.add("is-in"); });
+        }
+      });
+      if (busy) { window.requestAnimationFrame(gFrame); } else { gRunning = false; }
+    }
+    function gKick() { if (!gRunning) { gRunning = true; window.requestAnimationFrame(gFrame); } }
+    window.addEventListener("scroll", gKick, { passive: true });
+    window.addEventListener("resize", gKick);
+    gKick();
+  } else {
+    document.querySelectorAll(".after").forEach(function (a) { a.classList.add("is-in"); });
+  }
+
   /* ---------- Reveal content as it scrolls into view ---------- */
   var items = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !reduce) {
