@@ -170,6 +170,19 @@ main { display: block; }
 .facts dd { margin: 0; }
 .prose { margin: 32px 0 0; color: var(--text-2); }
 
+/* centred exhibition block under the images */
+.centered { text-align: center; margin-top: 64px; }
+.centered .prose { max-width: 640px; margin: 40px auto 0; }
+.facts-row { margin: 40px auto 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px 64px; }
+.facts-row dt { color: var(--muted); text-transform: uppercase; letter-spacing: 0.14em; font-size: 13px; }
+.facts-row dd { margin: 4px 0 0; font-size: 17px; }
+
+/* centred heading, left-aligned text in a centred column */
+.intro { margin: 0 auto 56px; }
+.intro h2 { text-align: center; text-wrap: balance; }
+.intro p { max-width: 720px; margin: 32px auto 0; color: var(--text-2); text-align: left; }
+.centered h1 { text-wrap: balance; }
+
 .split { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px 80px; margin-bottom: 48px; }
 .split > * { flex: 1 1 360px; }
 .title-l { font-size: clamp(34px, 4.5vw, 60px); }
