@@ -157,9 +157,9 @@ main { display: block; }
 
 .current-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px 32px; margin-bottom: 32px; }
 
-.pair { display: grid; grid-template-columns: 3fr 2fr; gap: 16px; align-items: end; }
-.pair .ph--wide { aspect-ratio: 4 / 3; }
-.pair .ph--tall { aspect-ratio: 4 / 5; }
+/* exhibition image + portrait: always the same height, top and bottom aligned */
+.pair { display: grid; grid-template-columns: 3fr 2fr; grid-template-rows: clamp(300px, 40vw, 560px); gap: 16px; }
+.pair .ph { height: 100%; aspect-ratio: auto; }
 
 .current-body { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 48px 80px; margin-top: 56px; }
 .title-xl { font-size: clamp(44px, 7vw, 104px); line-height: 0.96; }
@@ -295,7 +295,7 @@ html, body { overflow-x: clip; }
 }
 @media (max-width: 560px) {
   body { font-size: 17px; }
-  .pair { grid-template-columns: 1fr; }
+  .pair { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-rows: 110vw; }
   .cards, .team, .grid-3 { grid-template-columns: 1fr; }
   .grid-3 .ph { aspect-ratio: 4 / 3; }
 }
