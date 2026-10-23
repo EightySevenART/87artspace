@@ -170,6 +170,16 @@ main { display: block; }
 .facts dd { margin: 0; }
 .prose { margin: 32px 0 0; color: var(--text-2); }
 
+/* centring helpers */
+.center { text-align: center; margin-left: auto; margin-right: auto; }
+.lead.center { max-width: 760px; }
+.stack { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px; }
+.stack > *, .contact.stack > * { flex: none; }
+.cols-2 { text-align: center; }
+.stack p { margin: 0; max-width: 640px; }
+.stack .row, .stack .buttons { justify-content: center; }
+.contact.stack { padding-bottom: 96px; }
+
 /* centred exhibition block under the images */
 .centered { text-align: center; margin-top: 64px; }
 .centered .prose { max-width: 640px; margin: 40px auto 0; }
