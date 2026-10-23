@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#0e0e0e">
 <link rel="preload" href="assets/fonts/d-din-pro-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/d-din-pro-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=202610240039">
+<link rel="stylesheet" href="assets/css/style.css?v=202610240044">
 <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -69,10 +69,21 @@
         <h2 class="title-l" id="space-title">Welcome to our art space</h2>
         <p class="reveal">A home for art, culture and fashion in Stuttgart, created by creatives for creatives. We host exhibitions, events and collaborations that bring people and ideas together.</p>
       </div>
-      <div class="grid-3">
-        <div class="ph reveal"><img src="assets/img/space/space-window.jpg" alt="Artspace87: long table in front of the street window" loading="lazy" width="1554" height="1012"></div>
-        <div class="ph reveal" data-delay="1"><img src="assets/img/space/space-door.jpg" alt="Artspace87: white exhibition wall next to the entrance" loading="lazy" width="1452" height="1083"></div>
-        <div class="ph reveal" data-delay="2"><img src="assets/img/space/space-walls.jpg" alt="Artspace87: white walls and concrete floor" loading="lazy" width="1448" height="1086"></div>
+      <div class="carousel reveal" data-carousel>
+        <div class="carousel-track" tabindex="0" aria-label="Photos of the space">
+          <figure class="ph slide"><img src="assets/img/space/space-window.jpg" alt="Artspace87: long table in front of the street window" loading="lazy" width="1554" height="1012"></figure>
+          <figure class="ph slide"><img src="assets/img/space/space-curtain.jpg" alt="Artspace87: grey curtain between white walls" loading="lazy" width="1600" height="900"></figure>
+          <figure class="ph slide"><img src="assets/img/space/space-door.jpg" alt="Artspace87: white exhibition wall next to the entrance" loading="lazy" width="1452" height="1083"></figure>
+          <figure class="ph slide"><img src="assets/img/space/space-walls.jpg" alt="Artspace87: white walls and concrete floor" loading="lazy" width="1448" height="1086"></figure>
+        </div>
+        <div class="carousel-nav">
+          <button type="button" class="carousel-btn" data-dir="-1" aria-label="Previous photo">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+          <button type="button" class="carousel-btn" data-dir="1" aria-label="Next photo">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+        </div>
       </div>
       <div class="buttons reveal">
         <div class="btn-pair">
@@ -119,6 +130,6 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=202610240039"></script>
+<script src="assets/js/main.js?v=202610240044"></script>
 </body>
 </html>

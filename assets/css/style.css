@@ -205,6 +205,25 @@ main { display: block; }
 .split > * { flex: 1 1 360px; }
 .title-l { font-size: clamp(34px, 4.5vw, 60px); }
 
+/* photo carousel: 3 visible on desktop, 1 on phones, skip with arrows or swipe */
+.carousel-track {
+  display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 32px) / 3); gap: 16px;
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-track:focus-visible { outline: 2px solid var(--text); outline-offset: 6px; }
+.slide { margin: 0; aspect-ratio: 4 / 3; scroll-snap-align: start; }
+.carousel-nav { display: flex; justify-content: center; gap: 16px; margin-top: 24px; }
+.carousel-btn {
+  width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center;
+  background: transparent; color: var(--text); border: 1px solid var(--line); cursor: pointer;
+  transition: border-color 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+.carousel-btn:hover { border-color: var(--text); }
+.carousel-btn:disabled { opacity: 0.3; cursor: default; border-color: var(--line); }
+@media (max-width: 760px) { .carousel-track { grid-auto-columns: 86%; } .slide { scroll-snap-align: center; } }
+
 .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .grid-3 .ph { aspect-ratio: 4 / 3; }
 

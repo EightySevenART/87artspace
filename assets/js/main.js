@@ -102,6 +102,33 @@
     }
   }
 
+  /* ---------- Photo carousel ---------- */
+  document.querySelectorAll("[data-carousel]").forEach(function (c) {
+    var track = c.querySelector(".carousel-track");
+    var btns = c.querySelectorAll(".carousel-btn");
+    function step() {
+      var s = track.querySelector(".slide");
+      return s ? s.getBoundingClientRect().width + 16 : track.clientWidth;
+    }
+    function update() {
+      var max = track.scrollWidth - track.clientWidth - 2;
+      btns[0].disabled = track.scrollLeft <= 2;
+      btns[1].disabled = track.scrollLeft >= max;
+    }
+    btns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        track.scrollBy({ left: step() * parseInt(b.getAttribute("data-dir"), 10), behavior: reduce ? "auto" : "smooth" });
+      });
+    });
+    track.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); btns[1].click(); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); btns[0].click(); }
+    });
+    track.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  });
+
   /* ---------- Reveal content as it scrolls into view ---------- */
   var items = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !reduce) {
