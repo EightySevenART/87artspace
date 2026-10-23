@@ -1,0 +1,50 @@
+# Publishes the site to GitHub Pages.
+#  - Root (/):        the live site, or the "coming soon" page while site-mode.txt says "maintenance"
+#  - /preview/:       always the current main branch (not indexed by search engines)
+name: Deploy site
+
+on:
+  push:
+    branches: [main, maintenance]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+      - uses: actions/checkout@v4
+        with:
+          ref: maintenance
+          path: maintenance
+      - name: Assemble site
+        run: |
+          MODE=$(tr -d '[:space:]' < main/site-mode.txt 2>/dev/null || echo live)
+          echo "Site mode: $MODE"
+          mkdir -p out/preview
+          if [ "$MODE" = "maintenance" ]; then cp -r maintenance/. out/; else cp -r main/. out/; fi
+          cp -r main/. out/preview/
+          rm -rf out/.git out/.github out/preview/.git out/preview/.github
+          find out/preview -name '*.html' -exec sed -i 's#<head>#<head>\n<meta name="robots" content="noindex">#' {} +
+          touch out/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+      - id: deployment
+        uses: actions/deploy-pages@v4
