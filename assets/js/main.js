@@ -107,7 +107,7 @@
   if (grows.length && !reduce) {
     var gItems = grows.map(function (el) {
       var group = el.closest("[data-grow-group]") || el.parentNode;
-      return { el: el, afters: group.querySelectorAll(".after"), cur: 0, shown: false, max: parseFloat(el.getAttribute("data-max")) || 1.6 };
+      return { el: el, afters: group.querySelectorAll(".after"), cur: 0, shown: false, max: parseFloat(el.getAttribute("data-max")) || 1.3 };
     });
     var gRunning = false;
     function gClamp(v) { return Math.min(1, Math.max(0, v)); }
@@ -116,7 +116,7 @@
       var r = el.getBoundingClientRect();
       var vh = window.innerHeight;
       var mid = r.top + r.height / 2;      /* centre is not moved by the scale */
-      var start = vh * 0.98, end = vh * 0.5; /* big at the bottom edge, normal by mid-screen */
+      var start = vh * 0.95, end = vh * 0.55; /* grows on the way in, back to normal before mid-screen */
       /* at the very end of the page everything must be settled */
       if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) return 1;
       return gClamp((start - mid) / (start - end));
@@ -128,10 +128,11 @@
         var t = gTarget(it.el);
         var d = t - it.cur;
         if (Math.abs(d) > 0.001) { it.cur += d * 0.1; busy = true; } else { it.cur = t; }
-        var m = small ? Math.min(it.max, 1.3) : it.max;
-        var s = m + (1 - m) * gEase(it.cur);
+        var m = small ? Math.min(it.max, 1.15) : it.max;
+        /* pulse: normal -> briefly bigger -> normal again */
+        var s = 1 + (m - 1) * Math.sin(Math.PI * it.cur);
         it.el.style.transform = "scale(" + s.toFixed(4) + ")";
-        if (!it.shown && it.cur > 0.7) {
+        if (!it.shown && it.cur > 0.85) {
           it.shown = true;
           it.afters.forEach(function (a) { a.classList.add("is-in"); });
         }
