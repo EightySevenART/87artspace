@@ -183,14 +183,12 @@ main { display: block; }
 /* centred exhibition block under the images */
 .centered { text-align: center; margin-top: 64px; }
 .centered .prose { max-width: 640px; margin: 40px auto 0; }
-.facts-row { margin: 48px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-.facts-row .f-left { text-align: left; }
-.facts-row .f-mid { text-align: center; }
-.facts-row .f-right { text-align: right; }
-@media (max-width: 560px) {
-  .facts-row { grid-template-columns: 1fr; }
-  .facts-row .f-left, .facts-row .f-right { text-align: center; }
-}
+/* triangle: Exhibition + Vernissage on top, Location centred below */
+.facts-row { margin: 48px auto 0; max-width: 640px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 24px; }
+.facts-row .f-left { text-align: center; }
+.facts-row .f-right { text-align: center; }
+.facts-row .f-mid { grid-column: 1 / -1; text-align: center; }
+
 .facts-row dt { color: var(--muted); text-transform: uppercase; letter-spacing: 0.14em; font-size: 13px; }
 .facts-row dd { margin: 4px 0 0; font-size: 17px; }
 
