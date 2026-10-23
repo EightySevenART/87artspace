@@ -180,7 +180,7 @@ main { display: block; }
 /* centred heading, left-aligned text in a centred column */
 .intro { margin: 0 auto 56px; }
 .intro h2 { text-align: center; text-wrap: balance; }
-.intro p { max-width: 720px; margin: 32px auto 0; color: var(--text-2); text-align: left; }
+.intro p { max-width: 720px; margin: 32px auto 0; color: var(--text-2); text-align: center; }
 .centered h1 { text-wrap: balance; }
 
 .split { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px 80px; margin-bottom: 48px; }
