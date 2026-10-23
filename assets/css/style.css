@@ -296,7 +296,7 @@ main { display: block; }
 .year { padding: 56px 0 72px; border-top: 1px solid var(--line); }
 .year h2 { font-size: 15px; letter-spacing: 0.14em; margin-bottom: 32px; color: var(--muted); }
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px 16px; }
-.card .ph { aspect-ratio: 4 / 3; }
+.card .ph { aspect-ratio: 3 / 4; } /* exhibition posters */
 .card h3 { margin-top: 20px; font-size: 22px; line-height: 1.15; }
 .card p { margin: 6px 0 0; }
 .card .when { margin: 0; color: var(--muted); font-size: 15px; }
