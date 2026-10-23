@@ -262,6 +262,35 @@ main { display: block; }
 .team .name { margin-top: 18px; font-weight: 500; }
 .team .role { color: var(--muted); }
 
+/* ---------- Exhibition page ---------- */
+.ex-intro { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 48px 72px; align-items: center; margin-top: 80px; }
+.ex-poster { margin: 0; }
+.ex-text p { margin: 0 0 20px; color: var(--text-2); font-size: 19px; }
+.ex-text p:first-child { color: var(--text); font-size: clamp(22px, 2.2vw, 28px); line-height: 1.4; }
+.ex-text .btn { margin-top: 16px; }
+.lb-open { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.lb-open img { width: 100%; height: auto; transition: opacity 0.4s var(--ease); }
+.lb-open:hover img { opacity: 0.85; }
+.masonry { columns: 3 300px; column-gap: 16px; }
+.masonry .lb-open { break-inside: avoid; margin-bottom: 16px; }
+.lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(8, 8, 8, 0.96); display: flex; align-items: center; justify-content: center; padding: 64px clamp(16px, 6vw, 96px); }
+.lightbox[hidden] { display: none; }
+.lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.lightbox button { position: absolute; width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--text); border: 1px solid var(--line); cursor: pointer; }
+.lightbox button:hover { border-color: var(--text); }
+.lb-close { top: 16px; right: 16px; }
+.lb-prev { left: 16px; top: 50%; transform: translateY(-50%); }
+.lb-next { right: 16px; top: 50%; transform: translateY(-50%); }
+.card-link { display: block; }
+.card-link:hover { color: inherit; }
+.card-link:hover img { opacity: 0.85; }
+.card .ph img { transition: opacity 0.4s var(--ease); }
+@media (max-width: 760px) {
+  .ex-intro { grid-template-columns: 1fr; margin-top: 56px; }
+  .ex-text { text-align: center; }
+  .lb-prev, .lb-next { top: auto; bottom: 16px; transform: none; }
+}
+
 /* ---------- Archive ---------- */
 
 .year { padding: 56px 0 72px; border-top: 1px solid var(--line); }

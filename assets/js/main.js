@@ -129,6 +129,41 @@
     update();
   });
 
+  /* ---------- Lightbox (exhibition pages) ---------- */
+  var lb = document.getElementById("lightbox");
+  if (lb) {
+    var lbImg = lb.querySelector("img");
+    var opens = [].slice.call(document.querySelectorAll(".lb-open"));
+    var idx = 0, lastFocus = null;
+    function show(i) {
+      idx = (i + opens.length) % opens.length;
+      var src = opens[idx].getAttribute("data-src");
+      var alt = opens[idx].querySelector("img").getAttribute("alt") || "";
+      lbImg.src = src; lbImg.alt = alt;
+    }
+    function open(i) { lastFocus = document.activeElement; show(i); lb.hidden = false; document.body.style.overflow = "hidden"; lb.querySelector(".lb-close").focus(); }
+    function close() { lb.hidden = true; document.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); }
+    opens.forEach(function (b, i) { b.addEventListener("click", function () { open(i); }); });
+    lb.querySelector(".lb-close").addEventListener("click", close);
+    lb.querySelector(".lb-prev").addEventListener("click", function () { show(idx - 1); });
+    lb.querySelector(".lb-next").addEventListener("click", function () { show(idx + 1); });
+    lb.addEventListener("click", function (e) { if (e.target === lb) close(); });
+    document.addEventListener("keydown", function (e) {
+      if (lb.hidden) return;
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowRight") show(idx + 1);
+      if (e.key === "ArrowLeft") show(idx - 1);
+    });
+    var tx = null;
+    lb.addEventListener("touchstart", function (e) { tx = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener("touchend", function (e) {
+      if (tx === null) return;
+      var dx = e.changedTouches[0].clientX - tx;
+      if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
+      tx = null;
+    });
+  }
+
   /* ---------- Reveal content as it scrolls into view ---------- */
   var items = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !reduce) {
