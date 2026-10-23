@@ -314,7 +314,7 @@ html, body { overflow-x: clip; }
 }
 @media (max-width: 560px) {
   body { font-size: 17px; }
-  .pair { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-rows: 110vw; }
+  .pair { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-rows: 85vw; }
   .cards, .team, .grid-3 { grid-template-columns: 1fr; }
   .grid-3 .ph { aspect-ratio: 4 / 3; }
 }
