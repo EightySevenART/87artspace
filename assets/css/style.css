@@ -214,6 +214,10 @@ main { display: block; }
   border: 1px solid var(--text); font-size: 14px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
   transition: background 0.4s var(--ease), color 0.4s var(--ease);
 }
+/* two buttons side by side, always the same width */
+.btn-pair { display: inline-grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 16px; }
+.btn-pair .btn { justify-content: center; }
+@media (max-width: 560px) { .btn-pair { grid-auto-flow: row; width: 100%; max-width: 320px; } }
 .btn:hover, .btn--solid { background: var(--text); color: var(--bg); }
 .btn--solid:hover { background: transparent; color: var(--text); }
 
