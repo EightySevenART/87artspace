@@ -32,7 +32,7 @@
   --text-2: #c9c9c4;
   --muted: #9a9a94;
   --line: #2a2a28;
-  --header-h: 76px;
+  --header-h: 84px;
   --gutter: clamp(16px, 4vw, 48px);
   --max: 1240px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -106,13 +106,13 @@ h1, h2, h3 {
 .nav a { padding: 12px 0; }
 .nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 1px; }
 
-/* where the logo comes to rest */
-.logo-dock { width: 150px; height: 30px; }
+/* where the logo comes to rest (logo is almost square) */
+.logo-dock { height: 54px; width: 57px; }
 
 /* without JavaScript the logo simply sits in the header */
 .logo {
-  position: fixed; top: 24px; left: 50%; z-index: 50;
-  width: 150px;
+  position: fixed; top: 15px; left: 50%; z-index: 50;
+  width: 57px;
   transform: translateX(-50%);
   transform-origin: 0 0;
 }
@@ -121,14 +121,14 @@ h1, h2, h3 {
 .logo img, .logo svg { width: 100%; height: auto; }
 
 @media (max-width: 760px) {
-  :root { --header-h: 104px; }
+  :root { --header-h: 112px; }
   .site-header {
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "dock dock" "left right";
     align-content: center;
     gap: 12px 20px;
   }
-  .logo-dock { grid-area: dock; justify-self: center; width: 120px; height: 24px; }
+  .logo-dock { grid-area: dock; justify-self: center; width: 48px; height: 46px; }
   .nav { gap: 20px; font-size: 12px; }
   .nav a { padding: 6px 0; }
   .nav--left { grid-area: left; justify-content: flex-end; }

@@ -22,7 +22,10 @@
     function measure() {
       var vw = window.innerWidth;
       var vh = window.innerHeight;
-      var w = Math.min(vw * (vw < 760 ? 0.86 : 0.78), 1100);
+      var im = logo.querySelector("img");
+      var ratio = (im && im.naturalWidth && im.naturalHeight) ? im.naturalWidth / im.naturalHeight : 1;
+      /* start size: big, but always fits the screen */
+      var w = Math.min(vw * (vw < 760 ? 0.72 : 0.6), vh * 0.62 * ratio, 620);
       logo.style.left = "0px";
       logo.style.top = "0px";
       logo.style.width = w + "px";
