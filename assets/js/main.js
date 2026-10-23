@@ -41,24 +41,9 @@
       };
     }
 
-    /* the logo is fully docked exactly when the exhibition images arrive under the header */
-    var pairEl = document.querySelector(".pair");
-    var afterLogo = document.querySelectorAll(".after-logo");
-    var afterShown = false;
-    function dockDistance() {
-      if (!hero) return 1;
-      if (pairEl) {
-        var hh = header ? header.offsetHeight : 84;
-        var label = document.querySelector("#current .label");
-        var lh = label ? label.offsetHeight + 24 : 0;
-        var d = pairEl.getBoundingClientRect().top + window.scrollY - hh - lh - 24;
-        if (d > 100) return d;
-      }
-      return hero.offsetHeight * 0.75;
-    }
     function readTarget() {
       if (!hero) return 1;
-      return clamp(window.scrollY / dockDistance(), 0, 1);
+      return clamp(window.scrollY / (hero.offsetHeight * 0.75), 0, 1);
     }
 
     function paint() {
@@ -71,10 +56,6 @@
       header.style.setProperty("--chrome", chrome);
       header.classList.toggle("is-on", chrome > 0.9);
       if (hero) hero.style.setProperty("--p", current);
-      if (!afterShown && current > 0.8) {
-        afterShown = true;
-        afterLogo.forEach(function (el) { el.classList.add("is-in"); });
-      }
     }
 
     function frame() {
