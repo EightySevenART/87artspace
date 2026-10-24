@@ -428,3 +428,5 @@ html, body { overflow-x: clip; }
 .card[hidden], .year[hidden] { display: none; }
 .card .card-type { margin: 20px 0 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 .card .card-type + h3 { margin-top: 6px; }
+.filter-empty { text-align: center; color: var(--muted); margin: 64px 0 40px; }
+.filter-empty[hidden] { display: none; }

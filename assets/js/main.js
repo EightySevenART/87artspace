@@ -201,9 +201,7 @@
   var filter = document.querySelector(".filter");
   if (filter) {
     var cards = [].slice.call(document.querySelectorAll(".card[data-type]"));
-    var types = {};
-    cards.forEach(function (c) { types[c.getAttribute("data-type")] = true; });
-    if (Object.keys(types).length > 1) filter.hidden = false; /* only once both kinds exist */
+    var empty = document.querySelector(".filter-empty");
     filter.addEventListener("click", function (e) {
       var b = e.target.closest("button[data-filter]");
       if (!b) return;
@@ -216,6 +214,10 @@
       document.querySelectorAll(".year").forEach(function (y) {
         y.hidden = !y.querySelector(".card[data-type]:not([hidden])");
       });
+      if (empty) {
+        empty.textContent = "No " + (f === "event" ? "events" : "exhibitions") + " yet. Stay tuned.";
+        empty.hidden = cards.some(function (c) { return !c.hidden; });
+      }
     });
   }
 
