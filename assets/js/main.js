@@ -267,7 +267,10 @@
       var span = travel * 0.6;                                     /* scroll distance while pinned (less = faster) */
       hs.style.height = (hsSticky.offsetHeight + span) + "px";
       hsGeo = { top: top, start: start, travel: travel, span: span, vw: vw,
-                introOut: introH + 40, stageUp: introH * 0.5 };
+                introOut: introH + 40, stageUp: introH };
+      /* the photos move up into the title's place, so the following text can
+         start right below them: no empty black band when scrolling back up */
+      hs.style.marginBottom = (-introH) + "px";
     }
     function hsRead() {
       var r = hs.getBoundingClientRect();
