@@ -306,6 +306,12 @@ main { display: block; }
   .lb-prev, .lb-next { top: auto; bottom: 16px; transform: none; }
 }
 
+.wordmark {
+  margin: 0; padding: 24px var(--gutter) 64px; text-align: center; overflow: hidden;
+  font-weight: 700; font-size: clamp(44px, 14.5vw, 230px); line-height: 0.9; letter-spacing: 0.01em; text-transform: uppercase;
+  color: var(--text); white-space: nowrap;
+}
+
 /* ---------- Archive ---------- */
 
 .year { padding: 56px 0 72px; border-top: 1px solid var(--line); }
