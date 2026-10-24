@@ -430,3 +430,9 @@ html, body { overflow-x: clip; }
 .card .card-type + h3 { margin-top: 6px; }
 .filter-empty { text-align: center; color: var(--muted); margin: 64px 0 40px; }
 .filter-empty[hidden] { display: none; }
+
+/* Small galleries (3 photos): one row, outer photos centred on the middle one */
+.masonry--row { columns: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: center; }
+.masonry--row .lb-open { margin-bottom: 0; }
+@media (max-width: 760px) { .masonry--row { grid-template-columns: 1fr; } }
+.masonry--row .lb-open:not(:nth-child(2)) img { aspect-ratio: 4 / 3; object-fit: cover; }
