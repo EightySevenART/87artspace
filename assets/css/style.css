@@ -476,3 +476,5 @@ html, body { overflow-x: clip; }
 .back-link:hover svg { transform: translateX(-3px); }
 .back-bottom { display: flex; justify-content: center; margin-top: 96px; }
 #book { scroll-margin-top: var(--header-h); }
+.btn-trio .btn { white-space: nowrap; }
+@media (max-width: 900px) { .btn-trio { grid-auto-flow: row; width: 100%; max-width: 340px; } }
