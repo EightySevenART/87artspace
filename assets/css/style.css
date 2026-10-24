@@ -509,3 +509,15 @@ html, body { overflow-x: clip; }
 .privacy ul { margin: 0 0 12px; padding-left: 20px; }
 .privacy li { margin-bottom: 6px; }
 .privacy strong { color: var(--text); font-weight: 500; }
+
+/* ---------- Home: "Current exhibition" header ---------- */
+.now-on { display: flex; flex-direction: column; align-items: center; gap: 18px; margin-bottom: 48px; text-align: center; }
+.now-badge {
+  display: inline-flex; align-items: center; gap: 10px; margin: 0; padding: 8px 16px;
+  border: 1px solid var(--text-2); border-radius: 999px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text);
+}
+.now-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text); box-shadow: 0 0 0 0 rgba(242,242,238,0.6); animation: nowpulse 2s ease-out infinite; }
+@keyframes nowpulse { 0% { box-shadow: 0 0 0 0 rgba(242,242,238,0.55); } 70% { box-shadow: 0 0 0 9px rgba(242,242,238,0); } 100% { box-shadow: 0 0 0 0 rgba(242,242,238,0); } }
+@media (prefers-reduced-motion: reduce) { .now-dot { animation: none; } }
+.now-title { margin: 0; font-size: clamp(32px, 4.6vw, 64px); line-height: 1; font-weight: 700; letter-spacing: 0.01em; text-transform: uppercase; }
