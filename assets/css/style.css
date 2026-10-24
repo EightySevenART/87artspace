@@ -270,6 +270,8 @@ main { display: block; }
 .ex-text .btn { margin-top: 16px; }
 .artist-bio { margin-top: 140px; padding-top: 80px; border-top: 1px solid var(--line); }
 .artist-bio .title-l { margin-top: 16px; }
+.bio-portrait { margin: 40px auto 0; max-width: 420px; }
+.bio-portrait img { width: 100%; height: auto; }
 .bio-text { max-width: 720px; margin: 40px auto 0; text-align: center; }
 .bio-text p { margin: 0 0 20px; color: var(--text-2); }
 .lb-open { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
