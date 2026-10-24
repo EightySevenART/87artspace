@@ -237,20 +237,27 @@
     var hsStart = Math.max(0, hsSlides.indexOf(hs.querySelector(".hs-slide.is-start")));
     var hsGeo = null, hsCur = 0, hsTarget = 0, hsTick = false;
     hs.classList.add("is-driven");
+    var hsIntro = hs.querySelector(".hscroll-intro");
     function hsMeasure() {
       var vw = document.documentElement.clientWidth, vh = window.innerHeight;
-      var w = hsSlides[0].getBoundingClientRect().width;
-      var gap = parseFloat(getComputedStyle(hsTrack).columnGap) || 0;
-      var h = hsSlides[0].getBoundingClientRect().height;
       var head = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) || 84;
-      var top = Math.max(head + 24, head + (vh - head - h) / 2); /* photo sits centred below the header */
+      var top = head + 24;
+      hs.style.removeProperty("--slide-w");
+      var ar = hsSlides[0].getBoundingClientRect();
+      var ratio = ar.width / ar.height;
+      var introH = hsIntro ? hsIntro.offsetHeight + parseFloat(getComputedStyle(hsIntro).marginBottom) : 0;
+      /* photos shrink so title, text and photos all fit on screen together */
+      var h = Math.min(ar.height, vh - top - introH - 32);
+      h = Math.max(h, 160);
+      var w = h * ratio;
+      hs.style.setProperty("--slide-w", w + "px");
+      var gap = parseFloat(getComputedStyle(hsTrack).columnGap) || 0;
       var step = w + gap;
       var travel = (hsSlides.length - 1 - hsStart) * step;
       var span = travel * 0.45;          /* vertical scroll needed while pinned (less = faster) */
-      var lead = Math.min(vh * 0.35, 320); /* start gliding a bit before the strip pins */
       hs.style.setProperty("--hs-top", top + "px");
-      hs.style.height = (h + span) + "px";
-      hsGeo = { top: top, travel: travel, span: span, lead: lead, base: (vw - w) / 2 - hsStart * step };
+      hs.style.height = (hsSticky.offsetHeight + span) + "px";
+      hsGeo = { top: top, travel: travel, span: span, lead: 0, base: (vw - w) / 2 - hsStart * step };
     }
     function hsRead() {
       var r = hs.getBoundingClientRect();
