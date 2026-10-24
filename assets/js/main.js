@@ -311,6 +311,16 @@
     window.addEventListener("scroll", hsKick, { passive: true });
     window.addEventListener("resize", hsInit);
     window.addEventListener("load", hsInit);
+    /* the strip changes the page height, so jump to #book etc. again once it is measured */
+    function toHash() {
+      var t = location.hash && document.getElementById(location.hash.slice(1));
+      if (t) window.scrollTo(0, t.getBoundingClientRect().top + window.scrollY - (parseFloat(getComputedStyle(t).scrollMarginTop) || 0));
+    }
+    if (location.hash) {
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      toHash();
+      window.addEventListener("load", function () { hsInit(); toHash(); hsCur = hsTarget = hsRead(); hsPaint(); });
+    }
   }
 
   /* ---------- Archive: remember position, "Back to archive" returns there ---------- */
