@@ -109,15 +109,13 @@
     }
   }
 
-  /* ---------- Imprint: open when linked to (#imprint) ---------- */
-  var imp = document.getElementById("imprint");
-  if (imp && imp.tagName === "DETAILS") {
-    var openImp = function () {
-      if (location.hash === "#imprint") { imp.open = true; imp.scrollIntoView({ block: "start" }); }
-    };
-    openImp();
-    window.addEventListener("hashchange", openImp);
+  /* ---------- Imprint / Privacy: open when linked to (#imprint, #privacy) ---------- */
+  function openByHash() {
+    var d = location.hash && document.getElementById(location.hash.slice(1));
+    if (d && d.tagName === "DETAILS") { d.open = true; d.scrollIntoView({ block: "start" }); }
   }
+  openByHash();
+  window.addEventListener("hashchange", openByHash);
 
   /* ---------- Photo carousel ---------- */
   document.querySelectorAll("[data-carousel]").forEach(function (c) {

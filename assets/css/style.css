@@ -495,3 +495,13 @@ html, body { overflow-x: clip; }
 .nl-msg { color: var(--text); }
 @media (max-width: 560px) { .nl-form { flex-direction: column; max-width: 340px; } }
 .nl-form .btn { font-family: inherit; cursor: pointer; justify-content: center; }
+
+/* ---------- Privacy policy (footer toggle) ---------- */
+.privacy-toggle { border-top: 0; padding-top: 8px; }
+.privacy { max-width: 760px; margin: 0 auto; padding-top: 32px; text-align: left; font-size: 15px; color: var(--text-2); }
+.privacy-toggle[open] .privacy { animation: unfold 0.6s var(--ease); }
+.privacy h2 { font-size: 14px; letter-spacing: 0.14em; color: var(--text); margin: 0 0 16px; }
+.privacy h3 { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text); margin: 28px 0 8px; }
+.privacy p { margin: 0 0 12px; }
+.privacy .k { color: var(--muted); margin-top: 28px; }
+.privacy a { text-decoration: underline; text-underline-offset: 3px; }
