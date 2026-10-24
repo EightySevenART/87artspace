@@ -198,6 +198,9 @@ main { display: block; }
 /* centred heading, left-aligned text in a centred column */
 .intro { margin: 0 auto 56px; }
 .intro h2 { text-align: center; text-wrap: balance; }
+.intro .address { margin-top: 36px; color: var(--text); line-height: 1.8; }
+.intro .address .label { display: inline-block; margin-bottom: 6px; }
+.intro .address a { display: inline-block; margin-top: 8px; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
 .intro p { max-width: 720px; margin: 32px auto 0; color: var(--text-2); text-align: center; }
 .centered h1 { text-wrap: balance; }
 
