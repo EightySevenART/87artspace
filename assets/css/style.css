@@ -464,3 +464,7 @@ html, body { overflow-x: clip; }
   .hscroll-intro { margin-bottom: 24px; }
   .hs-item { margin-left: 28px; }
 }
+/* keep header + logo above the pinned photo strip (Safari layer fix) */
+.hscroll { z-index: 0; isolation: isolate; }
+.site-header { transform: translateZ(0); }
+.logo { z-index: 60; }
