@@ -442,3 +442,14 @@ html, body { overflow-x: clip; }
 .cols-3 .more-link { margin-top: 16px; }
 .cols-3 .more-link a { color: var(--text); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
 @media (max-width: 760px) { .cols-3.cols-center { grid-template-columns: 1fr; gap: 40px; } }
+
+/* ---------- About: horizontal scroll strip of space photos ---------- */
+.hscroll { position: relative; margin-top: 80px; --slide-w: min(calc(var(--max) - 2 * var(--gutter)), calc(100vw - 2 * var(--gutter))); --gap: 16px; }
+.hscroll-sticky { overflow: hidden; }
+.hscroll-track { display: flex; gap: var(--gap); padding: 0 var(--gutter); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.hscroll-track::-webkit-scrollbar { display: none; }
+.hs-slide { flex: 0 0 var(--slide-w); margin: 0; aspect-ratio: 16 / 9; background: var(--surface); scroll-snap-align: center; }
+.hs-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* scroll-driven mode (set by JS) */
+.hscroll.is-driven .hscroll-sticky { position: sticky; top: var(--hs-top, var(--header-h)); }
+.hscroll.is-driven .hscroll-track { overflow: visible; padding: 0; scroll-snap-type: none; will-change: transform; }

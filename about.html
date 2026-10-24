@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#0e0e0e">
 <link rel="preload" href="assets/fonts/d-din-pro-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/d-din-pro-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=202610240958">
+<link rel="stylesheet" href="assets/css/style.css?v=202610241006">
 <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -34,8 +34,21 @@
   <div class="wrap">
     <h1 class="title-xl center">About</h1>
     <p class="lead reveal center" data-delay="1">A multidisciplinary host for art, culture and fashion. Created by creatives for creatives.</p>
-    <div class="ph banner reveal"><img src="assets/img/space/space-curtain.jpg" alt="Artspace87: exhibition space with a grey curtain between white walls" width="1600" height="900"></div>
   </div>
+
+  <!-- Space photos: the strip moves left while scrolling down. "is-start" marks the photo shown first. -->
+  <section class="hscroll" aria-label="Photos of the space">
+    <div class="hscroll-sticky">
+      <div class="hscroll-track">
+      <figure class="hs-slide"><img src="assets/img/space/space-overview.jpg" alt="Artspace87: View through the space with benches, curtains and paintings" loading="lazy"></figure>
+      <figure class="hs-slide is-start"><img src="assets/img/space/space-curtain.jpg" alt="Artspace87: Exhibition space with a grey curtain between white walls"></figure>
+      <figure class="hs-slide"><img src="assets/img/space/space-window.jpg" alt="Artspace87: Long table in front of the street window" loading="lazy"></figure>
+      <figure class="hs-slide"><img src="assets/img/space/space-door.jpg" alt="Artspace87: White exhibition wall next to the entrance" loading="lazy"></figure>
+      <figure class="hs-slide"><img src="assets/img/space/space-walls.jpg" alt="Artspace87: White walls and concrete floor" loading="lazy"></figure>
+      <figure class="hs-slide"><img src="assets/img/space/space-benches.jpg" alt="Artspace87: Benches, grey curtains and a green sofa" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
 
   <section class="section">
     <div class="wrap cols-3 cols-center">
@@ -89,6 +102,6 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=202610240958"></script>
+<script src="assets/js/main.js?v=202610241006"></script>
 </body>
 </html>

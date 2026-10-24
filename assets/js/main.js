@@ -228,6 +228,50 @@
     window.addEventListener("hashchange", applyHash);
   }
 
+  /* ---------- About: space photos glide left while scrolling ---------- */
+  var hs = document.querySelector(".hscroll");
+  if (hs && !reduce) {
+    var hsSticky = hs.querySelector(".hscroll-sticky");
+    var hsTrack = hs.querySelector(".hscroll-track");
+    var hsSlides = [].slice.call(hs.querySelectorAll(".hs-slide"));
+    var hsStart = Math.max(0, hsSlides.indexOf(hs.querySelector(".hs-slide.is-start")));
+    var hsGeo = null, hsCur = 0, hsTarget = 0, hsTick = false;
+    hs.classList.add("is-driven");
+    function hsMeasure() {
+      var vw = document.documentElement.clientWidth, vh = window.innerHeight;
+      var w = hsSlides[0].getBoundingClientRect().width;
+      var gap = parseFloat(getComputedStyle(hsTrack).columnGap) || 16;
+      var h = w * 9 / 16;
+      var head = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) || 84;
+      var top = Math.max(head + 24, head + (vh - head - h) / 2); /* photo sits centred below the header */
+      var step = w + gap;
+      var travel = (hsSlides.length - 1 - hsStart) * step;
+      hs.style.setProperty("--hs-top", top + "px");
+      hs.style.height = (h + travel) + "px";
+      hsGeo = { top: top, travel: travel, base: (vw - w) / 2 - hsStart * step };
+    }
+    function hsRead() {
+      var r = hs.getBoundingClientRect();
+      return hsGeo.travel ? Math.min(1, Math.max(0, (hsGeo.top - r.top) / hsGeo.travel)) : 0;
+    }
+    function hsPaint() {
+      hsTrack.style.transform = "translate3d(" + (hsGeo.base - hsCur * hsGeo.travel) + "px,0,0)";
+    }
+    function hsFrame() {
+      var d = hsTarget - hsCur;
+      if (Math.abs(d) < 0.0005) { hsCur = hsTarget; } else { hsCur += d * 0.14; }
+      hsPaint();
+      if (hsCur !== hsTarget) { window.requestAnimationFrame(hsFrame); } else { hsTick = false; }
+    }
+    function hsKick() {
+      hsTarget = hsRead();
+      if (!hsTick) { hsTick = true; window.requestAnimationFrame(hsFrame); }
+    }
+    hsMeasure(); hsCur = hsTarget = hsRead(); hsPaint();
+    window.addEventListener("scroll", hsKick, { passive: true });
+    window.addEventListener("resize", function () { hsMeasure(); hsCur = hsTarget = hsRead(); hsPaint(); });
+  }
+
   /* ---------- Reveal content as it scrolls into view ---------- */
   var items = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !reduce) {
