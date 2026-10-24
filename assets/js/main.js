@@ -228,49 +228,70 @@
     window.addEventListener("hashchange", applyHash);
   }
 
-  /* ---------- About: space photos glide left while scrolling ---------- */
+  /* ---------- About: space photos drift left while scrolling (title stays) ---------- */
   var hs = document.querySelector(".hscroll");
   if (hs && !reduce) {
     var hsSticky = hs.querySelector(".hscroll-sticky");
+    var hsStage = hs.querySelector(".hscroll-stage");
     var hsTrack = hs.querySelector(".hscroll-track");
-    var hsSlides = [].slice.call(hs.querySelectorAll(".hs-slide"));
-    var hsStart = Math.max(0, hsSlides.indexOf(hs.querySelector(".hs-slide.is-start")));
+    var hsIntro = hs.querySelector(".hscroll-intro");
+    var hsItems = [].slice.call(hs.querySelectorAll(".hs-item"));
     var hsGeo = null, hsCur = 0, hsTarget = 0, hsTick = false;
     hs.classList.add("is-driven");
-    var hsIntro = hs.querySelector(".hscroll-intro");
     function hsMeasure() {
       var vw = document.documentElement.clientWidth, vh = window.innerHeight;
       var head = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) || 84;
-      var top = head + 24;
-      hs.style.removeProperty("--slide-w");
-      var ar = hsSlides[0].getBoundingClientRect();
-      var ratio = ar.width / ar.height;
-      var introH = hsIntro ? hsIntro.offsetHeight + parseFloat(getComputedStyle(hsIntro).marginBottom) : 0;
-      /* photos shrink so title, text and photos all fit on screen together */
-      var h = Math.min(ar.height, vh - top - introH - 32);
-      h = Math.max(h, 160);
-      var w = h * ratio;
-      hs.style.setProperty("--slide-w", w + "px");
-      var gap = parseFloat(getComputedStyle(hsTrack).columnGap) || 0;
-      var step = w + gap;
-      var travel = (hsSlides.length - 1 - hsStart) * step;
-      var span = travel * 0.45;          /* vertical scroll needed while pinned (less = faster) */
+      var top = hs.getBoundingClientRect().top + window.scrollY; /* pin right where it sits: no jump */
+      top = Math.min(top, head + 72);
+      var introH = hsIntro.offsetHeight + parseFloat(getComputedStyle(hsIntro).marginBottom);
+      var stageH = Math.max(260, vh - top - introH - 24);       /* photo area fills the rest of the screen */
       hs.style.setProperty("--hs-top", top + "px");
+      hs.style.setProperty("--stage-h", stageH + "px");
+      hsTrack.style.transform = "none";
+      var mob = vw < 760;
+      hsItems.forEach(function (it) {
+        var cs = getComputedStyle(it);
+        var hp = parseFloat(cs.getPropertyValue("--h")) / 100 * (mob ? 0.85 : 1);
+        var arS = cs.getPropertyValue("--ar").split("/");
+        var ar = parseFloat(arS[0]) / parseFloat(arS[1] || 1);
+        var cap = it.querySelector("figcaption");
+        var capH = cap ? cap.offsetHeight + 10 : 0;
+        var fh = stageH * hp - capH, fw = fh * ar;
+        var fr = it.querySelector(".hs-frame");
+        fr.style.width = fw + "px"; fr.style.height = fh + "px";
+        it.style.width = fw + "px";
+      });
+      var trackW = hsTrack.scrollWidth;
+      var gut = parseFloat(getComputedStyle(hsIntro).paddingLeft) || 24;
+      var start = vw * (vw < 760 ? 0.08 : 0.32);                  /* first photo starts right of centre */
+      var end = vw - gut - trackW;                                 /* last photo stops at the right edge */
+      var travel = Math.max(0, start - end);
+      var span = travel * 0.6;                                     /* scroll distance while pinned (less = faster) */
       hs.style.height = (hsSticky.offsetHeight + span) + "px";
-      hsGeo = { top: top, travel: travel, span: span, lead: 0, base: (vw - w) / 2 - hsStart * step };
+      hsGeo = { top: top, start: start, travel: travel, span: span, vw: vw };
     }
     function hsRead() {
       var r = hs.getBoundingClientRect();
-      if (!hsGeo.travel) return 0;
-      var t = Math.min(1, Math.max(0, (hsGeo.top - r.top + hsGeo.lead) / (hsGeo.span + hsGeo.lead)));
-      return 0.5 - Math.cos(Math.PI * t) / 2; /* ease in and out: soft start, soft landing */
+      if (!hsGeo.span) return 0;
+      var t = Math.min(1, Math.max(0, (hsGeo.top - r.top) / hsGeo.span));
+      return 0.5 - Math.cos(Math.PI * t) / 2; /* soft start, soft landing */
     }
     function hsPaint() {
-      hsTrack.style.transform = "translate3d(" + (hsGeo.base - hsCur * hsGeo.travel) + "px,0,0)";
+      var x = hsGeo.start - hsCur * hsGeo.travel;
+      hsTrack.style.transform = "translate3d(" + x + "px,0,0)";
+      for (var i = 0; i < hsItems.length; i++) {
+        var it = hsItems[i];
+        var sp = parseFloat(it.getAttribute("data-speed")) || 1;
+        it.style.transform = "translate3d(" + ((1 - sp) * hsCur * hsGeo.travel * 0.15) + "px,0,0)"; /* depth */
+        var r = it.getBoundingClientRect();
+        var rel = ((r.left + r.width / 2) - hsGeo.vw / 2) / hsGeo.vw; /* -1 .. 1 across the screen */
+        var img = it.querySelector("img");
+        if (img) img.style.transform = "translate3d(" + (rel * -5) + "%,0,0)"; /* photo glides inside its frame */
+      }
     }
     function hsFrame() {
       var d = hsTarget - hsCur;
-      if (Math.abs(d) < 0.0005) { hsCur = hsTarget; } else { hsCur += d * 0.09; }
+      if (Math.abs(d) < 0.0005) { hsCur = hsTarget; } else { hsCur += d * 0.08; }
       hsPaint();
       if (hsCur !== hsTarget) { window.requestAnimationFrame(hsFrame); } else { hsTick = false; }
     }
@@ -278,9 +299,11 @@
       hsTarget = hsRead();
       if (!hsTick) { hsTick = true; window.requestAnimationFrame(hsFrame); }
     }
-    hsMeasure(); hsCur = hsTarget = hsRead(); hsPaint();
+    function hsInit() { hsMeasure(); hsCur = hsTarget = hsRead(); hsPaint(); }
+    hsInit();
     window.addEventListener("scroll", hsKick, { passive: true });
-    window.addEventListener("resize", function () { hsMeasure(); hsCur = hsTarget = hsRead(); hsPaint(); });
+    window.addEventListener("resize", hsInit);
+    window.addEventListener("load", hsInit);
   }
 
   /* ---------- Reveal content as it scrolls into view ---------- */
