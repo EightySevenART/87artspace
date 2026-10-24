@@ -138,6 +138,14 @@ h1, h2, h3 {
 /* ---------- Hero (home only) ---------- */
 
 .hero { height: 100vh; height: 100svh; position: relative; }
+/* EIGHTYSEVEN in the hero: invisible while the big logo is centred, fades in as the logo docks */
+.hero-word {
+  position: absolute; left: 0; right: 0; bottom: 6vh; margin: 0; padding: 0 var(--gutter);
+  text-align: center; white-space: nowrap; overflow: hidden; pointer-events: none;
+  font-weight: 700; font-size: clamp(44px, 14.5vw, 230px); line-height: 0.9; letter-spacing: 0.01em; color: var(--text);
+  opacity: calc((var(--p, 0) - 0.7) * 3.4);
+  transform: translateY(calc((1 - var(--p, 0)) * 48px));
+}
 .scroll-hint {
   position: absolute; left: 50%; bottom: 32px;
   transform: translateX(-50%);
