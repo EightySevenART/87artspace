@@ -398,3 +398,19 @@ html, body { overflow-x: clip; }
   .grow { transform: none !important; }
   .scroll-hint span { animation: none; }
 }
+
+/* ---------- Read more (archive pages) ---------- */
+.bio-text--more { margin-top: 0; }
+.js .readmore { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.6s var(--ease); }
+.js .readmore.is-open { grid-template-rows: 1fr; }
+.readmore-inner { overflow: hidden; min-height: 0; }
+.js .readmore:not(.is-open) .readmore-inner { visibility: hidden; transition: visibility 0s 0.6s; }
+.readmore-btn { display: none; }
+.js .readmore-btn {
+  display: flex; align-items: center; gap: 8px; margin: 8px auto 0; padding: 8px 0;
+  background: none; border: 0; color: var(--text); cursor: pointer;
+  font: inherit; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.readmore-btn svg { transition: transform 0.4s var(--ease); }
+.readmore-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+.readmore-btn:hover span { text-decoration: underline; text-underline-offset: 4px; }

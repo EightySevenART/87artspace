@@ -181,6 +181,22 @@
     });
   }
 
+  /* ---------- Read more (archive pages) ---------- */
+  document.querySelectorAll(".readmore-btn").forEach(function (btn) {
+    var box = document.getElementById(btn.getAttribute("aria-controls"));
+    if (!box) return;
+    btn.addEventListener("click", function () {
+      var open = !box.classList.contains("is-open");
+      box.classList.toggle("is-open", open);
+      btn.setAttribute("aria-expanded", open);
+      btn.querySelector("span").textContent = open ? "Read less" : "Read more";
+      if (!open) {
+        var top = box.closest("section").getBoundingClientRect().top;
+        if (top < 0) box.closest("section").scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+      }
+    });
+  });
+
   /* ---------- Reveal content as it scrolls into view ---------- */
   var items = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !reduce) {
