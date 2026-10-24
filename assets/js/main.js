@@ -58,7 +58,7 @@
       header.classList.toggle("is-on", chrome > 0.9);
       if (hero) hero.style.setProperty("--p", current);
       if (heroWord) {
-        var wo = clamp((current - 0.7) * 3.4, 0, 1);
+        var wo = clamp((current - 0.5) * 4, 0, 1); /* fully bright at 75 % of the logo motion */
         heroWord.style.opacity = wo;
         heroWord.style.visibility = wo > 0.01 ? "visible" : "hidden";
         heroWord.style.transform = "translateY(" + ((1 - wo) * 32) + "px)";
