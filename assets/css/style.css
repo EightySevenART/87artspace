@@ -505,3 +505,7 @@ html, body { overflow-x: clip; }
 .privacy p { margin: 0 0 12px; }
 .privacy .k { color: var(--muted); margin-top: 28px; }
 .privacy a { text-decoration: underline; text-underline-offset: 3px; }
+.privacy h4 { font-size: 15px; font-weight: 700; color: var(--text); margin: 22px 0 8px; text-transform: none; letter-spacing: 0; }
+.privacy ul { margin: 0 0 12px; padding-left: 20px; }
+.privacy li { margin-bottom: 6px; }
+.privacy strong { color: var(--text); font-weight: 500; }
