@@ -453,3 +453,4 @@ html, body { overflow-x: clip; }
 /* scroll-driven mode (set by JS) */
 .hscroll.is-driven .hscroll-sticky { position: sticky; top: var(--hs-top, var(--header-h)); }
 .hscroll.is-driven .hscroll-track { overflow: visible; padding: 0; scroll-snap-type: none; will-change: transform; }
+@media (max-width: 760px) { .hs-slide { aspect-ratio: 4 / 5; } }

@@ -241,7 +241,7 @@
       var vw = document.documentElement.clientWidth, vh = window.innerHeight;
       var w = hsSlides[0].getBoundingClientRect().width;
       var gap = parseFloat(getComputedStyle(hsTrack).columnGap) || 0;
-      var h = w * 9 / 16;
+      var h = hsSlides[0].getBoundingClientRect().height;
       var head = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) || 84;
       var top = Math.max(head + 24, head + (vh - head - h) / 2); /* photo sits centred below the header */
       var step = w + gap;
