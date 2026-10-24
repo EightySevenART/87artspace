@@ -436,3 +436,9 @@ html, body { overflow-x: clip; }
 .masonry--row .lb-open { margin-bottom: 0; }
 @media (max-width: 760px) { .masonry--row { grid-template-columns: 1fr; } }
 .masonry--row .lb-open:not(:nth-child(2)) img { aspect-ratio: 4 / 3; object-fit: cover; }
+
+/* About: three centred columns */
+.cols-center { text-align: center; }
+.cols-3 .more-link { margin-top: 16px; }
+.cols-3 .more-link a { color: var(--text); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
+@media (max-width: 760px) { .cols-3.cols-center { grid-template-columns: 1fr; gap: 40px; } }

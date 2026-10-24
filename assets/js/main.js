@@ -202,6 +202,11 @@
   if (filter) {
     var cards = [].slice.call(document.querySelectorAll(".card[data-type]"));
     var empty = document.querySelector(".filter-empty");
+    function applyHash() {
+      var h = location.hash.replace("#", "");
+      var hb = filter.querySelector('button[data-filter="' + (h === "events" ? "event" : h === "exhibitions" ? "exhibition" : "") + '"]');
+      if (hb) hb.click();
+    }
     filter.addEventListener("click", function (e) {
       var b = e.target.closest("button[data-filter]");
       if (!b) return;
@@ -219,6 +224,8 @@
         empty.hidden = cards.some(function (c) { return !c.hidden; });
       }
     });
+    applyHash();
+    window.addEventListener("hashchange", applyHash);
   }
 
   /* ---------- Reveal content as it scrolls into view ---------- */
