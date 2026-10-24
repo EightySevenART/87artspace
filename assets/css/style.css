@@ -444,7 +444,7 @@ html, body { overflow-x: clip; }
 @media (max-width: 760px) { .cols-3.cols-center { grid-template-columns: 1fr; gap: 40px; } }
 
 /* ---------- About: horizontal scroll strip of space photos ---------- */
-.hscroll { position: relative; margin-top: 80px; --slide-w: min(calc(var(--max) - 2 * var(--gutter)), calc(100vw - 2 * var(--gutter))); --gap: 16px; }
+.hscroll { position: relative; margin-top: 80px; --slide-w: min(calc(var(--max) - 2 * var(--gutter)), calc(100vw - 2 * var(--gutter))); --gap: 0px; }
 .hscroll-sticky { overflow: hidden; }
 .hscroll-track { display: flex; gap: var(--gap); padding: 0 var(--gutter); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
 .hscroll-track::-webkit-scrollbar { display: none; }
