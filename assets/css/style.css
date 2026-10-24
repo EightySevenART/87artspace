@@ -478,3 +478,20 @@ html, body { overflow-x: clip; }
 #book { scroll-margin-top: var(--header-h); }
 .btn-trio .btn { white-space: nowrap; }
 @media (max-width: 900px) { .btn-trio { grid-auto-flow: row; width: 100%; max-width: 340px; } }
+
+/* ---------- Newsletter: vernissage invitations ---------- */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.nl-form { display: flex; gap: 12px; width: 100%; max-width: 520px; }
+.nl-form input[type="email"] {
+  flex: 1; min-width: 0; padding: 14px 18px; background: transparent; color: var(--text);
+  border: 1px solid var(--line); border-radius: 0; font: inherit; font-size: 16px;
+  transition: border-color 0.3s var(--ease);
+}
+.nl-form input[type="email"]::placeholder { color: var(--muted); }
+.nl-form input[type="email"]:focus { outline: none; border-color: var(--text-2); }
+.nl-form .btn { flex: none; }
+.nl-hp { position: absolute; left: -9999px; }
+.nl-note { font-size: 13px; color: var(--muted); }
+.nl-msg { color: var(--text); }
+@media (max-width: 560px) { .nl-form { flex-direction: column; max-width: 340px; } }
+.nl-form .btn { font-family: inherit; cursor: pointer; justify-content: center; }

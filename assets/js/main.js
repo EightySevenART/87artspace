@@ -357,6 +357,27 @@
     });
   });
 
+  /* ---------- Newsletter sign-up (Brevo form endpoint in data-endpoint) ---------- */
+  document.querySelectorAll(".nl-form").forEach(function (form) {
+    var msg = form.parentNode.querySelector(".nl-msg");
+    var note = form.parentNode.querySelector(".nl-note");
+    function say(t) { msg.textContent = t; msg.hidden = false; }
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var email = form.querySelector('input[type="email"]');
+      if (!email.value || !email.checkValidity()) { say("Please enter a valid email address."); email.focus(); return; }
+      var url = form.getAttribute("data-endpoint");
+      if (!url) { say("Sign-up opens soon. Until then, write to us at 87artspace@gmail.com."); return; }
+      var btn = form.querySelector("button"); btn.disabled = true;
+      fetch(url, { method: "POST", mode: "no-cors", body: new FormData(form) })
+        .then(function () {
+          form.hidden = true; if (note) note.hidden = true;
+          say("Almost done: please confirm your sign-up in the email we just sent you.");
+        })
+        .catch(function () { btn.disabled = false; say("Something went wrong. Please try again."); });
+    });
+  });
+
   /* ---------- Reveal content as it scrolls into view ---------- */
   var items = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !reduce) {
