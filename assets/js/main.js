@@ -102,6 +102,16 @@
     }
   }
 
+  /* ---------- Imprint: open when linked to (#imprint) ---------- */
+  var imp = document.getElementById("imprint");
+  if (imp && imp.tagName === "DETAILS") {
+    var openImp = function () {
+      if (location.hash === "#imprint") { imp.open = true; imp.scrollIntoView({ block: "start" }); }
+    };
+    openImp();
+    window.addEventListener("hashchange", openImp);
+  }
+
   /* ---------- Photo carousel ---------- */
   document.querySelectorAll("[data-carousel]").forEach(function (c) {
     var track = c.querySelector(".carousel-track");

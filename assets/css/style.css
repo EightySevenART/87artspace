@@ -320,6 +320,19 @@ main { display: block; }
 .contact > * { flex: 1 1 360px; }
 .contact p { margin: 0 0 28px; font-size: clamp(20px, 2vw, 26px); line-height: 1.4; }
 .contact .row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
+/* imprint: a centred toggle that unfolds */
+.imprint-toggle { border-top: 1px solid var(--line); padding-top: 40px; text-align: center; }
+.imprint-toggle summary {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 8px;
+  cursor: pointer; list-style: none; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.imprint-toggle summary::-webkit-details-marker { display: none; }
+.imprint-toggle summary:hover { color: var(--muted); }
+.imprint-toggle summary svg { transition: transform 0.4s var(--ease); }
+.imprint-toggle[open] summary svg { transform: rotate(180deg); }
+.imprint-toggle .imprint { text-align: left; border-top: 0; padding-top: 32px; }
+.imprint-toggle[open] .imprint { animation: unfold 0.6s var(--ease); }
+@keyframes unfold { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: none; } }
 .imprint { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; padding-top: 48px; border-top: 1px solid var(--line); font-size: 15px; }
 .imprint h2 { font-size: 14px; letter-spacing: 0.14em; margin-bottom: 14px; }
 .imprint p { margin: 0 0 14px; }
