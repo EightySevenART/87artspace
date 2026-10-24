@@ -445,9 +445,10 @@ html, body { overflow-x: clip; }
 
 /* ---------- About: horizontal scroll strip of space photos ---------- */
 .hscroll { position: relative; }
-.hscroll-intro { margin-bottom: 40px; }
+.hscroll-intro { margin-bottom: 40px; will-change: transform, opacity; }
 .hscroll-intro .lead { margin-bottom: 0; }
-.hscroll-stage { position: relative; height: var(--stage-h, 62vh); overflow: hidden; }
+.hscroll-stage { position: relative; height: var(--stage-h, 62vh); will-change: transform; }
+.hscroll-sticky { overflow: hidden; }
 .hscroll-track { display: flex; align-items: center; height: 100%; padding: 0 var(--gutter); gap: 0; overflow-x: auto; scrollbar-width: none; }
 .hscroll-track::-webkit-scrollbar { display: none; }
 .hs-item { flex: none; margin: 0 0 0 clamp(40px, 7vw, 120px); display: flex; flex-direction: column; }

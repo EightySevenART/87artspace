@@ -254,21 +254,20 @@
         var hp = parseFloat(cs.getPropertyValue("--h")) / 100 * (mob ? 0.85 : 1);
         var arS = cs.getPropertyValue("--ar").split("/");
         var ar = parseFloat(arS[0]) / parseFloat(arS[1] || 1);
-        var cap = it.querySelector("figcaption");
-        var capH = cap ? cap.offsetHeight + 10 : 0;
-        var fh = stageH * hp - capH, fw = fh * ar;
+        var fh = stageH * hp, fw = fh * ar;
         var fr = it.querySelector(".hs-frame");
         fr.style.width = fw + "px"; fr.style.height = fh + "px";
         it.style.width = fw + "px";
       });
       var trackW = hsTrack.scrollWidth;
       var gut = parseFloat(getComputedStyle(hsIntro).paddingLeft) || 24;
-      var start = vw * (vw < 760 ? 0.08 : 0.32);                  /* first photo starts right of centre */
+      var start = vw * (vw < 760 ? 0.08 : 0.2);                  /* first photo starts right of centre */
       var end = vw - gut - trackW;                                 /* last photo stops at the right edge */
       var travel = Math.max(0, start - end);
       var span = travel * 0.6;                                     /* scroll distance while pinned (less = faster) */
       hs.style.height = (hsSticky.offsetHeight + span) + "px";
-      hsGeo = { top: top, start: start, travel: travel, span: span, vw: vw };
+      hsGeo = { top: top, start: start, travel: travel, span: span, vw: vw,
+                introOut: introH + 40, stageUp: introH * 0.5 };
     }
     function hsRead() {
       var r = hs.getBoundingClientRect();
@@ -279,6 +278,11 @@
     function hsPaint() {
       var x = hsGeo.start - hsCur * hsGeo.travel;
       hsTrack.style.transform = "translate3d(" + x + "px,0,0)";
+      /* the title is slowly pushed up and out while the photos drift */
+      var up = Math.min(1, hsCur / 0.85);
+      hsIntro.style.transform = "translate3d(0," + (-up * hsGeo.introOut) + "px,0)";
+      hsIntro.style.opacity = 1 - Math.max(0, (up - 0.55) / 0.45);
+      hsStage.style.transform = "translate3d(0," + (-up * hsGeo.stageUp) + "px,0)";
       for (var i = 0; i < hsItems.length; i++) {
         var it = hsItems[i];
         var sp = parseFloat(it.getAttribute("data-speed")) || 1;
