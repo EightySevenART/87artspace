@@ -197,6 +197,28 @@
     });
   });
 
+  /* ---------- Archive filter (All / Exhibitions / Events) ---------- */
+  var filter = document.querySelector(".filter");
+  if (filter) {
+    var cards = [].slice.call(document.querySelectorAll(".card[data-type]"));
+    var types = {};
+    cards.forEach(function (c) { types[c.getAttribute("data-type")] = true; });
+    if (Object.keys(types).length > 1) filter.hidden = false; /* only once both kinds exist */
+    filter.addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-filter]");
+      if (!b) return;
+      var f = b.getAttribute("data-filter");
+      filter.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+      cards.forEach(function (c) {
+        c.hidden = f !== "all" && c.getAttribute("data-type") !== f;
+        c.classList.add("is-in");
+      });
+      document.querySelectorAll(".year").forEach(function (y) {
+        y.hidden = !y.querySelector(".card[data-type]:not([hidden])");
+      });
+    });
+  }
+
   /* ---------- Reveal content as it scrolls into view ---------- */
   var items = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !reduce) {

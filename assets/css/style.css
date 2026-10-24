@@ -414,3 +414,17 @@ html, body { overflow-x: clip; }
 .readmore-btn svg { transition: transform 0.4s var(--ease); }
 .readmore-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
 .readmore-btn:hover span { text-decoration: underline; text-underline-offset: 4px; }
+
+/* ---------- Archive filter ---------- */
+.filter { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: -32px 0 64px; }
+.filter[hidden] { display: none; }
+.filter button {
+  padding: 10px 20px; background: none; border: 1px solid var(--line); color: var(--muted); cursor: pointer;
+  font: inherit; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+.filter button:hover { color: var(--text); border-color: var(--text-2); }
+.filter button[aria-pressed="true"] { color: var(--bg); background: var(--text); border-color: var(--text); }
+.card[hidden], .year[hidden] { display: none; }
+.card .card-type { margin: 20px 0 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.card .card-type + h3 { margin-top: 6px; }
