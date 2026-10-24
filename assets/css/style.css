@@ -468,3 +468,10 @@ html, body { overflow-x: clip; }
 .hscroll { z-index: 0; isolation: isolate; }
 .site-header { transform: translateZ(0); }
 .logo { z-index: 60; }
+
+/* ---------- Back to archive (detail pages) ---------- */
+.back-link { display: inline-flex; align-items: center; gap: 8px; margin: -32px 0 40px; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-2); }
+.back-link:hover { color: var(--text); }
+.back-link svg { transition: transform 0.3s var(--ease); }
+.back-link:hover svg { transform: translateX(-3px); }
+.back-bottom { display: flex; justify-content: center; margin-top: 96px; }
