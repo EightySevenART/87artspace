@@ -20,7 +20,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/d-din-pro-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/d-din-pro-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=202610241404">
+<link rel="stylesheet" href="assets/css/style.css?v=202610252105">
 <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -103,7 +103,62 @@
       <h2 class="title-l" id="book-title">Book the space</h2>
       <div class="reveal">
         <p style="margin:0 auto 32px;color:var(--text-2)">Planning an exhibition, a presentation, a workshop or a board meeting? Artspace87 can be booked by arrangement. Tell us about your idea and we will find the right format together.</p>
-        <a class="btn btn--solid" href="mailto:87artspace@gmail.com?subject=Booking%20request%20Artspace87">Book the space</a>
+        <a class="btn btn--solid" href="mailto:87artspace@gmail.com?subject=Booking%20request%20Artspace87" data-live-only>Book the space</a>
+      </div>
+    </div>
+
+    <!-- ===== BOOKING FORM (preview only until Formcarry is connected) =====
+         Go-live: put the Formcarry URL into data-endpoint, then remove "hidden data-preview-only"
+         here and "data-live-only" on the mail button above. -->
+    <div class="wrap" hidden data-preview-only>
+      <form class="bk-form" data-endpoint="" novalidate>
+        <fieldset class="bk-step">
+          <legend>01 · What are you planning?</legend>
+          <div class="bk-tiles">
+            <label class="bk-tile"><input type="radio" name="Type" value="Exhibition" required><span class="bk-tile-in"><span class="bk-tile-t">Exhibition</span><span class="bk-tile-d">Art, design, objects. Exhibitions, vernissages and presentations.</span></span></label>
+            <label class="bk-tile"><input type="radio" name="Type" value="Pop-up / Launch" required><span class="bk-tile-in"><span class="bk-tile-t">Pop-up / Launch</span><span class="bk-tile-d">Product launch, temporary store, sample sale.</span></span></label>
+            <label class="bk-tile"><input type="radio" name="Type" value="Workshop / Talk" required><span class="bk-tile-in"><span class="bk-tile-t">Workshop / Talk</span><span class="bk-tile-d">Courses, talks, tastings, panels.</span></span></label>
+            <label class="bk-tile"><input type="radio" name="Type" value="Seminar / Meeting" required><span class="bk-tile-in"><span class="bk-tile-t">Seminar / Meeting</span><span class="bk-tile-d">Workshops, board meetings, team days.</span></span></label>
+            <label class="bk-tile"><input type="radio" name="Type" value="Private event" required><span class="bk-tile-in"><span class="bk-tile-t">Private event</span><span class="bk-tile-d">Dinner, celebration, private gathering.</span></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="bk-step">
+          <legend>02 · When?</legend>
+          <div class="bk-grid bk-grid--4">
+            <label class="bk-field"><span>Date from</span><input type="date" name="Date from" required></label>
+            <label class="bk-field"><span>Date to</span><input type="date" name="Date to"></label>
+            <label class="bk-field"><span>Time from</span><input type="time" name="Time from"></label>
+            <label class="bk-field"><span>Time to</span><input type="time" name="Time to"></label>
+          </div>
+          <label class="bk-field bk-field--small"><span>Number of guests (approx.)</span><input type="number" name="Guests" min="1" inputmode="numeric"></label>
+        </fieldset>
+
+        <fieldset class="bk-step">
+          <legend>03 · Contact</legend>
+          <div class="bk-grid">
+            <label class="bk-field"><span>First name *</span><input type="text" name="First name" autocomplete="given-name" required></label>
+            <label class="bk-field"><span>Last name *</span><input type="text" name="Last name" autocomplete="family-name" required></label>
+            <label class="bk-field"><span>Company</span><input type="text" name="Company" autocomplete="organization"></label>
+            <label class="bk-field"><span>Email *</span><input type="email" name="email" autocomplete="email" required></label>
+            <label class="bk-field"><span>Phone</span><input type="tel" name="Phone" autocomplete="tel"></label>
+          </div>
+          <label class="bk-field"><span>Your idea *</span><textarea name="Your idea" rows="5" required placeholder="Tell us what you have in mind: format, set-up, catering, anything that matters."></textarea></label>
+        </fieldset>
+
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+
+        <label class="bk-consent"><input type="checkbox" name="Consent" value="yes" required><span>You may store my details and contact me about this request. More in our <a href="index.html#privacy">privacy policy</a>.</span></label>
+
+        <div class="bk-submit">
+          <button class="btn btn--solid" type="submit">Send request →</button>
+          <p class="bk-note">We will get back to you within 48 hours.</p>
+        </div>
+        <p class="bk-msg" role="status" aria-live="polite" hidden></p>
+      </form>
+      <div class="bk-done" hidden>
+        <h3 class="title-l">Thank you!</h3>
+        <p>Your request has been sent. We will get back to you within 48 hours.</p>
       </div>
     </div>
   </section>
@@ -131,6 +186,6 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=202610241404"></script>
+<script src="assets/js/main.js?v=202610252105"></script>
 </body>
 </html>

@@ -521,3 +521,46 @@ html, body { overflow-x: clip; }
 @keyframes nowpulse { 0% { box-shadow: 0 0 0 0 rgba(242,242,238,0.55); } 70% { box-shadow: 0 0 0 9px rgba(242,242,238,0); } 100% { box-shadow: 0 0 0 0 rgba(242,242,238,0); } }
 @media (prefers-reduced-motion: reduce) { .now-dot { animation: none; } }
 .now-title { margin: 0; font-size: clamp(32px, 4.6vw, 64px); line-height: 1; font-weight: 700; letter-spacing: 0.01em; text-transform: uppercase; }
+
+/* ---------- Booking request form ---------- */
+.bk-form { max-width: 880px; margin: 72px auto 0; text-align: left; }
+.bk-step { border: 0; margin: 0 0 56px; padding: 0; min-width: 0; }
+.bk-step legend { padding: 0; margin-bottom: 20px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text); }
+.bk-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+.bk-tile { position: relative; cursor: pointer; }
+.bk-tile input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.bk-tile-in { display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 18px 16px; border: 1px solid var(--line); transition: border-color .3s var(--ease), background .3s var(--ease), color .3s var(--ease); }
+.bk-tile-t { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.bk-tile-d { font-size: 13px; line-height: 1.45; color: var(--muted); }
+.bk-tile:hover .bk-tile-in { border-color: var(--text-2); }
+.bk-tile input:focus-visible + .bk-tile-in { outline: 1px solid var(--text); outline-offset: 2px; }
+.bk-tile input:checked + .bk-tile-in { background: var(--text); color: var(--bg); border-color: var(--text); }
+.bk-tile input:checked + .bk-tile-in .bk-tile-d { color: #4a4a46; }
+.bk-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 16px; }
+.bk-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.bk-field { display: flex; flex-direction: column; gap: 8px; }
+.bk-field--small { max-width: 260px; }
+.bk-field span { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.bk-field input, .bk-field textarea {
+  width: 100%; padding: 14px 16px; background: transparent; color: var(--text); border: 1px solid var(--line); border-radius: 0;
+  font: inherit; font-size: 16px; color-scheme: dark; transition: border-color .3s var(--ease);
+}
+.bk-field textarea { resize: vertical; min-height: 140px; }
+.bk-field input::placeholder, .bk-field textarea::placeholder { color: var(--muted); }
+.bk-field input:focus, .bk-field textarea:focus { outline: none; border-color: var(--text-2); }
+.bk-consent { display: flex; gap: 12px; align-items: flex-start; margin: 0 0 32px; font-size: 14px; color: var(--text-2); cursor: pointer; }
+.bk-consent input { width: 18px; height: 18px; margin: 2px 0 0; flex: none; accent-color: var(--text); }
+.bk-consent a { text-decoration: underline; text-underline-offset: 3px; }
+.bk-submit { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.bk-submit .btn { font-family: inherit; cursor: pointer; }
+.bk-note { margin: 0; font-size: 13px; color: var(--muted); }
+.bk-msg { margin: 20px 0 0; color: var(--text); }
+.bk-done { max-width: 640px; margin: 72px auto 0; text-align: center; }
+.bk-done p { color: var(--text-2); }
+@media (max-width: 760px) {
+  .bk-grid, .bk-grid--4 { grid-template-columns: 1fr 1fr; }
+  .bk-form { margin-top: 48px; }
+}
+@media (max-width: 480px) { .bk-grid { grid-template-columns: 1fr; } .bk-tiles { grid-template-columns: 1fr 1fr; } }
+[hidden] { display: none !important; }
+@media (max-width: 480px) { .bk-grid--4 { grid-template-columns: 1fr 1fr; } }

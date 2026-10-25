@@ -1,6 +1,13 @@
 /* Artspace87 – logo scroll motion + reveal on scroll */
 (function () {
   var root = document.documentElement;
+
+  /* ---------- Preview-only features: visible under /preview/, hidden on the live site ---------- */
+  if (/^\/preview(\/|$)/.test(location.pathname)) {
+    root.classList.add("is-preview");
+    document.querySelectorAll("[data-preview-only]").forEach(function (el) { el.hidden = false; });
+    document.querySelectorAll("[data-live-only]").forEach(function (el) { el.hidden = true; });
+  }
   root.classList.add("js");
 
   var logo = document.querySelector(".logo");
@@ -373,6 +380,25 @@
           say("Almost done: please confirm your sign-up in the email we just sent you.");
         })
         .catch(function () { btn.disabled = false; say("Something went wrong. Please try again."); });
+    });
+  });
+
+  /* ---------- Booking request form (Formcarry endpoint in data-endpoint) ---------- */
+  document.querySelectorAll(".bk-form").forEach(function (form) {
+    var msg = form.querySelector(".bk-msg");
+    var done = form.parentNode.querySelector(".bk-done");
+    function say(t) { msg.textContent = t; msg.hidden = false; }
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!form.querySelector('input[name="Type"]:checked')) { say("Please choose what you are planning."); form.querySelector(".bk-tiles").scrollIntoView({ block: "center", behavior: "smooth" }); return; }
+      var bad = form.querySelector(":invalid");
+      if (bad) { say("Please fill in all fields marked with * and accept the privacy note."); bad.focus(); return; }
+      var url = form.getAttribute("data-endpoint");
+      if (!url) { say("Preview: the form is not connected yet. On the live site this request would now be sent to us."); return; }
+      var btn = form.querySelector('button[type="submit"]'); btn.disabled = true; msg.hidden = true;
+      fetch(url, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); form.hidden = true; done.hidden = false; done.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" }); })
+        .catch(function () { btn.disabled = false; say("Something went wrong. Please try again or write to us at 87artspace@gmail.com."); });
     });
   });
 

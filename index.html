@@ -21,7 +21,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/d-din-pro-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/d-din-pro-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=202610241404">
+<link rel="stylesheet" href="assets/css/style.css?v=202610252105">
 <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -119,9 +119,9 @@
   </section>
 
   <!-- ===== NEWSLETTER (vernissage invitations only) =====
-       NOT LIVE YET: remove "hidden" here AND on the newsletter part of the privacy policy (search: data-newsletter).
+       NOT LIVE YET (shown only on /preview/): remove "hidden data-preview-only" here AND on the newsletter part of the privacy policy (search: data-newsletter).
        To connect Brevo: paste the form's action URL into data-endpoint below. -->
-  <section class="section newsletter" id="invitations" aria-labelledby="nl-title" hidden data-newsletter>
+  <section class="section newsletter" id="invitations" aria-labelledby="nl-title" hidden data-newsletter data-preview-only>
     <div class="wrap stack">
       <h2 class="title-l" id="nl-title">Get invited</h2>
       <p class="reveal" style="color:var(--text-2)">Invitations to our vernissages. Nothing else.</p>
@@ -260,7 +260,7 @@
         <p>Wenn Sie uns per E-Mail, Telefon oder Telefax kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden personenbezogenen Daten (Name, Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
         <p>Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) sofern diese abgefragt wurde; die Einwilligung ist jederzeit widerrufbar.</p>
         <p>Die von Ihnen an uns per Kontaktanfragen übersandten Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z.&nbsp;B. nach abgeschlossener Bearbeitung Ihres Anliegens). Zwingende gesetzliche Bestimmungen – insbesondere gesetzliche Aufbewahrungsfristen – bleiben unberührt.</p>
-        <section data-newsletter hidden>
+        <section data-newsletter hidden data-preview-only>
           <h3>5. Newsletter</h3>
           <h4>Newsletterdaten</h4>
           <p>Wenn Sie den auf der Website angebotenen Newsletter beziehen möchten, benötigen wir von Ihnen eine E-Mail-Adresse sowie Informationen, welche uns die Überprüfung gestatten, dass Sie der Inhaber der angegebenen E-Mail-Adresse sind und mit dem Empfang des Newsletters einverstanden sind. Diese Daten verwenden wir für den Versand der angeforderten Informationen und geben diese nicht an Dritte weiter. Im Rahmen von Newsletter-Kampagnen können wir verschiedene Daten analysieren (z.&nbsp;B. Öffnungszeitpunkt, IP-Adresse, Geräteinformationen, angeklickte Links und ggf. nachfolgende Aktionen).</p>
@@ -277,6 +277,6 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=202610241404"></script>
+<script src="assets/js/main.js?v=202610252105"></script>
 </body>
 </html>
