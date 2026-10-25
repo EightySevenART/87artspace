@@ -573,3 +573,8 @@ html, body { overflow-x: clip; }
 .bk-collapse:not(.is-open) .bk-collapse-in { visibility: hidden; transition: visibility 0s .7s; }
 .bk-collapse .bk-form { opacity: 0; transform: translateY(16px); transition: opacity .5s var(--ease) .15s, transform .6s var(--ease) .15s; }
 .bk-collapse.is-open .bk-form { opacity: 1; transform: none; }
+.bk-guests { display: flex; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+.bk-guests .bk-field--small { flex: 0 1 260px; }
+.bk-check { display: flex; gap: 10px; align-items: center; padding-bottom: 16px; font-size: 14px; color: var(--text-2); cursor: pointer; }
+.bk-check input { width: 18px; height: 18px; margin: 0; accent-color: var(--text); flex: none; }
+.bk-field input:disabled { opacity: .35; }

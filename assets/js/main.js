@@ -397,6 +397,21 @@
     if (location.hash === "#book") setBk(true, false); /* coming from "Book the space" on the home page */
   }
 
+  /* ---------- Booking form: guests "not plannable" ---------- */
+  var gOpen = document.getElementById("bk-guests-open"), gNum = document.getElementById("bk-guests");
+  if (gOpen && gNum) {
+    var syncG = function () { gNum.disabled = gOpen.checked; if (gOpen.checked) gNum.value = ""; };
+    gOpen.addEventListener("change", syncG);
+    document.querySelectorAll('.bk-tile input').forEach(function (r) {
+      r.addEventListener("change", function () {
+        /* exhibitions and pop-ups: pre-tick, as visitor numbers can't be planned */
+        if (/Exhibition|Pop-up/.test(r.value) && !gNum.value) gOpen.checked = true;
+        else if (!/Exhibition|Pop-up/.test(r.value)) gOpen.checked = false;
+        syncG();
+      });
+    });
+  }
+
   /* ---------- Booking request form (Formcarry endpoint in data-endpoint) ---------- */
   document.querySelectorAll(".bk-form").forEach(function (form) {
     var msg = form.querySelector(".bk-msg");
