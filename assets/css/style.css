@@ -564,3 +564,12 @@ html, body { overflow-x: clip; }
 @media (max-width: 480px) { .bk-grid { grid-template-columns: 1fr; } .bk-tiles { grid-template-columns: 1fr 1fr; } }
 [hidden] { display: none !important; }
 @media (max-width: 480px) { .bk-grid--4 { grid-template-columns: 1fr 1fr; } }
+.bk-toggle { font-family: inherit; cursor: pointer; gap: 10px; }
+.bk-toggle svg { transition: transform .4s var(--ease); }
+.bk-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+.bk-collapse { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .7s var(--ease); scroll-margin-top: calc(var(--header-h) - 40px); }
+.bk-collapse.is-open { grid-template-rows: 1fr; }
+.bk-collapse-in { overflow: hidden; min-height: 0; }
+.bk-collapse:not(.is-open) .bk-collapse-in { visibility: hidden; transition: visibility 0s .7s; }
+.bk-collapse .bk-form { opacity: 0; transform: translateY(16px); transition: opacity .5s var(--ease) .15s, transform .6s var(--ease) .15s; }
+.bk-collapse.is-open .bk-form { opacity: 1; transform: none; }

@@ -383,6 +383,20 @@
     });
   });
 
+  /* ---------- Booking form: unfolds on "Book the space" ---------- */
+  var bkBtn = document.querySelector(".bk-toggle");
+  var bkPanel = document.getElementById("bk-panel");
+  if (bkBtn && bkPanel) {
+    var setBk = function (open, scroll) {
+      bkPanel.classList.toggle("is-open", open);
+      bkBtn.setAttribute("aria-expanded", open);
+      bkBtn.querySelector("span").textContent = open ? "Close" : "Book the space";
+      if (open && scroll) setTimeout(function () { bkPanel.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" }); }, 120);
+    };
+    bkBtn.addEventListener("click", function () { setBk(!bkPanel.classList.contains("is-open"), true); });
+    if (location.hash === "#book") setBk(true, false); /* coming from "Book the space" on the home page */
+  }
+
   /* ---------- Booking request form (Formcarry endpoint in data-endpoint) ---------- */
   document.querySelectorAll(".bk-form").forEach(function (form) {
     var msg = form.querySelector(".bk-msg");
