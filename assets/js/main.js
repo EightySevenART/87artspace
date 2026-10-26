@@ -372,7 +372,7 @@
       var email = form.querySelector('input[type="email"]');
       if (!email.value || !email.checkValidity()) { say("Please enter a valid email address."); email.focus(); return; }
       var url = form.getAttribute("data-endpoint");
-      if (!url) { say("Sign-up opens soon. Until then, write to us at 87artspace@gmail.com."); return; }
+      if (!url) { say("Sign-up opens soon. Until then, write to us at info@87artspace.com."); return; }
       var btn = form.querySelector("button"); btn.disabled = true;
       fetch(url, { method: "POST", mode: "no-cors", body: new FormData(form) })
         .then(function () {
@@ -427,7 +427,7 @@
       var btn = form.querySelector('button[type="submit"]'); btn.disabled = true; msg.hidden = true;
       fetch(url, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) })
         .then(function (r) { if (!r.ok) throw new Error(r.status); form.hidden = true; done.hidden = false; done.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" }); })
-        .catch(function () { btn.disabled = false; say("Something went wrong. Please try again or write to us at 87artspace@gmail.com."); });
+        .catch(function () { btn.disabled = false; say("Something went wrong. Please try again or write to us at info@87artspace.com."); });
     });
   });
 
