@@ -431,6 +431,34 @@
     });
   });
 
+  /* ---------- Email links: also copy the address (fallback when no mail app is set up, e.g. Windows) ---------- */
+  var toast = null, toastT = null;
+  function showToast(t) {
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.className = "toast"; toast.setAttribute("role", "status"); toast.setAttribute("aria-live", "polite");
+      document.body.appendChild(toast);
+    }
+    toast.textContent = t; toast.classList.add("is-on");
+    clearTimeout(toastT); toastT = setTimeout(function () { toast.classList.remove("is-on"); }, 3200);
+  }
+  function copyText(t) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t);
+    return new Promise(function (ok, no) {
+      var ta = document.createElement("textarea"); ta.value = t; ta.setAttribute("readonly", "");
+      ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy") ? ok() : no(); } catch (e) { no(e); }
+      document.body.removeChild(ta);
+    });
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest('a[href^="mailto:"]');
+    if (!a) return;
+    var addr = decodeURIComponent(a.getAttribute("href").slice(7).split("?")[0]);
+    copyText(addr).then(function () { showToast("Email address copied: " + addr); }, function () {});
+    /* the mailto link still opens the mail app where one is set up */
+  });
+
   /* ---------- Reveal content as it scrolls into view ---------- */
   var items = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !reduce) {

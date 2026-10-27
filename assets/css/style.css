@@ -578,3 +578,12 @@ html, body { overflow-x: clip; }
 .bk-check { display: flex; gap: 10px; align-items: center; padding-bottom: 16px; font-size: 14px; color: var(--text-2); cursor: pointer; }
 .bk-check input { width: 18px; height: 18px; margin: 0; accent-color: var(--text); flex: none; }
 .bk-field input:disabled { opacity: .35; }
+
+/* ---------- Toast (e.g. "Email address copied") ---------- */
+.toast {
+  position: fixed; left: 50%; bottom: 28px; z-index: 100; transform: translate(-50%, 16px);
+  max-width: calc(100vw - 32px); padding: 14px 20px; background: var(--text); color: var(--bg);
+  font-size: 14px; letter-spacing: 0.02em; opacity: 0; pointer-events: none;
+  transition: opacity .3s var(--ease), transform .4s var(--ease);
+}
+.toast.is-on { opacity: 1; transform: translate(-50%, 0); }
