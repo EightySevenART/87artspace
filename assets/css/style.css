@@ -587,3 +587,4 @@ html, body { overflow-x: clip; }
   transition: opacity .3s var(--ease), transform .4s var(--ease);
 }
 .toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+.ex-text .btn-pair .btn { white-space: nowrap; }
