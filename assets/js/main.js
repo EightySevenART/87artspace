@@ -416,14 +416,28 @@
 
   /* ---------- Booking request form (Formcarry endpoint in data-endpoint) ---------- */
   document.querySelectorAll(".bk-form").forEach(function (form) {
+    form.addEventListener("input", function (e) { var w = e.target.closest(".is-invalid"); if (w) w.classList.remove("is-invalid"); });
+    form.addEventListener("change", function (e) { var w = e.target.closest(".is-invalid"); if (w) w.classList.remove("is-invalid"); });
     var msg = form.querySelector(".bk-msg");
     var done = form.parentNode.querySelector(".bk-done");
     function say(t) { msg.textContent = t; msg.hidden = false; }
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!form.querySelector('input[name="Type"]:checked')) { say("Please choose what you are planning."); form.querySelector(".bk-tiles").scrollIntoView({ block: "center", behavior: "smooth" }); return; }
-      var bad = form.querySelector(":invalid");
-      if (bad) { say("Please fill in all fields marked with * and accept the privacy note."); bad.focus(); return; }
+      form.querySelectorAll(".is-invalid").forEach(function (x) { x.classList.remove("is-invalid"); });
+      var bads = [].slice.call(form.querySelectorAll("input:invalid, textarea:invalid"));
+      if (bads.length) {
+        var names = [];
+        bads.forEach(function (b) {
+          var wrap = b.closest(".bk-field, .bk-consent");
+          if (wrap) wrap.classList.add("is-invalid");
+          var lab = b.type === "checkbox" ? "privacy note" : ((wrap && wrap.querySelector("span")) ? wrap.querySelector("span").textContent.replace("*", "").trim() : b.name);
+          if (names.indexOf(lab) < 0) names.push(lab);
+        });
+        say("Please complete: " + names.join(", ") + ".");
+        bads[0].focus();
+        return;
+      }
       var url = form.getAttribute("data-endpoint");
       if (!url) { say("Preview: the form is not connected yet. On the live site this request would now be sent to us."); return; }
       var btn = form.querySelector('button[type="submit"]'); btn.disabled = true; msg.hidden = true;

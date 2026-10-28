@@ -610,3 +610,6 @@ html, body { overflow-x: clip; }
 .nl-done .nl-done-t { font-size: 18px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: .06em; }
 .nl-done strong { color: var(--text); font-weight: 500; }
 @media (max-width: 560px) { .nl-steps { flex-direction: column; align-items: flex-start; gap: 12px; text-align: left; } }
+.bk-field.is-invalid input, .bk-field.is-invalid textarea { border-color: #e06c6c; }
+.bk-field.is-invalid span, .bk-consent.is-invalid span { color: #e06c6c; }
+.bk-msg { color: #e06c6c; }
