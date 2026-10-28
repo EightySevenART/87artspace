@@ -451,12 +451,60 @@
       document.body.removeChild(ta);
     });
   }
+  /* Phones: mailto opens the mail app reliably, so open it and copy as a bonus.
+     Desktop: many computers (esp. Windows) have no mail app set up, so offer a small chooser instead. */
+  var touch = window.matchMedia("(pointer: coarse)").matches;
+  var sheet = null;
+  function closeSheet() { if (sheet) { sheet.classList.remove("is-on"); document.removeEventListener("keydown", escSheet); } }
+  function escSheet(e) { if (e.key === "Escape") closeSheet(); }
+  function openSheet(addr, subject, mailto, opener) {
+    var su = subject ? encodeURIComponent(subject) : "";
+    var gmail = "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(addr) + (su ? "&su=" + su : "");
+    var outlook = "https://outlook.office.com/mail/deeplink/compose?to=" + encodeURIComponent(addr) + (su ? "&subject=" + su : "");
+    if (!sheet) {
+      sheet = document.createElement("div");
+      sheet.className = "mail-sheet";
+      sheet.setAttribute("role", "dialog"); sheet.setAttribute("aria-modal", "true"); sheet.setAttribute("aria-label", "Write us an email");
+      sheet.innerHTML =
+        '<div class="mail-card">' +
+          '<button type="button" class="mail-x" aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>' +
+          '<p class="label">Write us</p>' +
+          '<p class="mail-addr"></p>' +
+          '<div class="mail-actions">' +
+            '<button type="button" class="btn btn--solid mail-copy">Copy address</button>' +
+            '<a class="btn mail-gmail" target="_blank" rel="noopener">Open in Gmail</a>' +
+            '<a class="btn mail-outlook" target="_blank" rel="noopener">Open in Outlook</a>' +
+            '<a class="btn mail-app">Open mail app</a>' +
+          '</div>' +
+        '</div>';
+      document.body.appendChild(sheet);
+      sheet.addEventListener("click", function (e) { if (e.target === sheet || e.target.closest(".mail-x")) closeSheet(); });
+      sheet.querySelectorAll(".mail-gmail, .mail-outlook, .mail-app").forEach(function (l) { l.addEventListener("click", function () { setTimeout(closeSheet, 150); }); });
+    }
+    sheet.querySelector(".mail-addr").textContent = addr;
+    sheet.querySelector(".mail-gmail").href = gmail;
+    sheet.querySelector(".mail-outlook").href = outlook;
+    sheet.querySelector(".mail-app").href = mailto;
+    var cp = sheet.querySelector(".mail-copy");
+    cp.textContent = "Copy address";
+    cp.onclick = function () { copyText(addr).then(function () { cp.textContent = "Copied ✓"; showToast("Email address copied: " + addr); }, function () {}); };
+    sheet.classList.add("is-on");
+    document.addEventListener("keydown", escSheet);
+    setTimeout(function () { cp.focus(); }, 50);
+  }
   document.addEventListener("click", function (e) {
     var a = e.target.closest('a[href^="mailto:"]');
-    if (!a) return;
-    var addr = decodeURIComponent(a.getAttribute("href").slice(7).split("?")[0]);
-    copyText(addr).then(function () { showToast("Email address copied: " + addr); }, function () {});
-    /* the mailto link still opens the mail app where one is set up */
+    if (!a || a.classList.contains("mail-app")) return;
+    var href = a.getAttribute("href");
+    var addr = decodeURIComponent(href.slice(7).split("?")[0]);
+    var m = href.match(/[?&]subject=([^&]*)/);
+    var subject = m ? decodeURIComponent(m[1]) : "";
+    if (touch) {
+      copyText(addr).then(function () { showToast("Email address copied: " + addr); }, function () {});
+      return; /* phone: let the mail app open */
+    }
+    e.preventDefault();
+    openSheet(addr, subject, href, a);
   });
 
   /* ---------- Reveal content as it scrolls into view ---------- */
