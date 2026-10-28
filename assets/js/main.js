@@ -1,4 +1,4 @@
-/* Artspace87 – logo scroll motion + reveal on scroll */
+/* 87artspace – logo scroll motion + reveal on scroll */
 (function () {
   var root = document.documentElement;
 

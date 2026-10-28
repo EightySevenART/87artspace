@@ -1,6 +1,6 @@
-# Artspace87
+# 87artspace
 
-Website of Artspace87. Plain HTML/CSS/JS, hosted with GitHub Pages (no build step).
+Website of 87artspace. Plain HTML/CSS/JS, hosted with GitHub Pages (no build step).
 
 ## Structure
 
