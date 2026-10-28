@@ -21,7 +21,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/d-din-pro-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/d-din-pro-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=202610281723">
+<link rel="stylesheet" href="assets/css/style.css?v=202610281736">
 <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -132,7 +132,17 @@
         <input type="hidden" name="locale" value="en">
         <button class="btn btn--solid" type="submit">Sign up</button>
       </form>
-      <p class="nl-note">You will get a confirmation email first. Unsubscribe at any time with one click.</p>
+      <ol class="nl-steps">
+        <li><span>1</span>Enter your email and sign up.</li>
+        <li><span>2</span>We send you a confirmation email.</li>
+        <li><span>3</span>Click the link in it. Only then you are on the list.</li>
+      </ol>
+      <p class="nl-note">No email? Check your spam folder. Unsubscribe at any time with one click.</p>
+      <div class="nl-done" role="status" aria-live="polite" hidden>
+        <p class="nl-done-t">Almost done: please check your inbox.</p>
+        <p>We have just sent you an email. <strong>Click the confirmation link in it</strong> to receive our invitations. Without confirmation you will not be added to the list.</p>
+        <p class="nl-note">No email within a few minutes? Check your spam or promotions folder.</p>
+      </div>
       <p class="nl-msg" role="status" aria-live="polite" hidden></p>
     </div>
   </section>
@@ -286,6 +296,6 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=202610281723"></script>
+<script src="assets/js/main.js?v=202610281736"></script>
 </body>
 </html>

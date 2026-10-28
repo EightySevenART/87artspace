@@ -377,7 +377,9 @@
       fetch(url, { method: "POST", mode: "no-cors", body: new FormData(form) })
         .then(function () {
           form.hidden = true; if (note) note.hidden = true;
-          say("Almost done: please confirm your sign-up in the email we just sent you.");
+          var steps = form.parentNode.querySelector(".nl-steps"); if (steps) steps.hidden = true;
+          var done = form.parentNode.querySelector(".nl-done");
+          if (done) { done.hidden = false; } else { say("Almost done: please confirm your sign-up in the email we just sent you."); }
         })
         .catch(function () { btn.disabled = false; say("Something went wrong. Please try again."); });
     });

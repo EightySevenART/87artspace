@@ -602,3 +602,11 @@ html, body { overflow-x: clip; }
 .mail-addr { margin: 12px 0 28px; font-size: clamp(18px, 2vw, 22px); font-weight: 500; letter-spacing: .02em; color: var(--text); word-break: break-all; user-select: all; }
 .mail-actions { display: grid; gap: 10px; }
 .mail-actions .btn { justify-content: center; font-family: inherit; cursor: pointer; width: 100%; }
+.nl-steps { list-style: none; margin: 4px 0 0; padding: 0; display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; font-size: 14px; color: var(--text-2); }
+.nl-steps li { display: flex; align-items: center; gap: 10px; }
+.nl-steps span { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border: 1px solid var(--text-2); border-radius: 50%; font-size: 12px; font-weight: 700; color: var(--text); flex: none; }
+.nl-done { max-width: 560px; padding: 28px 24px; border: 1px solid var(--text-2); }
+.nl-done p { margin: 0 0 10px; color: var(--text-2); }
+.nl-done .nl-done-t { font-size: 18px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: .06em; }
+.nl-done strong { color: var(--text); font-weight: 500; }
+@media (max-width: 560px) { .nl-steps { flex-direction: column; align-items: flex-start; gap: 12px; text-align: left; } }
