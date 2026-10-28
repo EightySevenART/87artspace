@@ -399,6 +399,29 @@
     if (location.hash === "#book") setBk(true, false); /* coming from "Book the space" on the home page */
   }
 
+  /* ---------- Booking form: dates start with the current year already filled in ---------- */
+  var dFrom = document.querySelector('.bk-form input[name="Date from"]');
+  var dTo = document.querySelector('.bk-form input[name="Date to"]');
+  if (dFrom) {
+    var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+    var now = new Date();
+    var today = now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate());
+    dFrom.min = today;
+    if (dTo) dTo.min = today;
+    /* when an empty date field is opened, start from today (from) or from the start date (to),
+       so only day and month need changing; everything stays editable */
+    var prefill = function (el, val) { if (!el.value) { el.value = val; } };
+    ["focus", "pointerdown"].forEach(function (ev) {
+      dFrom.addEventListener(ev, function () { prefill(dFrom, today); });
+      if (dTo) dTo.addEventListener(ev, function () { prefill(dTo, dFrom.value || today); });
+    });
+    dFrom.addEventListener("change", function () {
+      if (!dTo) return;
+      dTo.min = dFrom.value || today;
+      if (dTo.value && dFrom.value && dTo.value < dFrom.value) dTo.value = dFrom.value;
+    });
+  }
+
   /* ---------- Booking form: guests "not plannable" ---------- */
   var gOpen = document.getElementById("bk-guests-open"), gNum = document.getElementById("bk-guests");
   if (gOpen && gNum) {
