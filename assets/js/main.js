@@ -546,6 +546,22 @@
     openSheet(addr, subject, href, a);
   });
 
+  /* ---------- Video tiles: autoplay muted, sound toggle ---------- */
+  document.querySelectorAll(".vid-tile").forEach(function (t) {
+    var v = t.querySelector("video"), b = t.querySelector(".vid-sound");
+    if (reduce) { v.removeAttribute("autoplay"); v.pause(); v.controls = true; if (b) b.hidden = true; return; }
+    if (b) b.addEventListener("click", function () {
+      v.muted = !v.muted;
+      if (!v.muted) v.play();
+      b.setAttribute("aria-pressed", !v.muted);
+      b.setAttribute("aria-label", v.muted ? "Turn sound on" : "Turn sound off");
+    });
+    /* only play while visible */
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { v.play().catch(function () {}); } else { v.pause(); } }); }, { threshold: 0.2 }).observe(v);
+    }
+  });
+
   /* ---------- Reveal content as it scrolls into view ---------- */
   var items = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !reduce) {
