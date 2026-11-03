@@ -627,3 +627,6 @@ html, body { overflow-x: clip; }
 .vid-sound .i-on { display: none; }
 .vid-sound[aria-pressed="true"] .i-on { display: block; }
 .vid-sound[aria-pressed="true"] .i-off { display: none; }
+.ph--video video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+.ph--video { padding: 0; }
+@media (max-width: 760px) { .pair .ph--video { aspect-ratio: 464 / 262; } }
