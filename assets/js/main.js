@@ -235,7 +235,14 @@
 
   /* ---------- About: space photos drift left while scrolling (title stays) ---------- */
   var hs = document.querySelector(".hscroll");
-  if (hs && !reduce) {
+  var hsMobile = window.matchMedia("(max-width: 760px)");
+  if (hs) {
+    /* phones: no horizontal drift, photos simply stacked (see CSS .hscroll:not(.is-driven)) */
+    if (hsMobile.matches || reduce) hs.querySelectorAll(".hs-item").forEach(function (it) { it.classList.add("reveal"); });
+    var hsWasMobile = hsMobile.matches;
+    window.addEventListener("resize", function () { if (hsMobile.matches !== hsWasMobile) location.reload(); });
+  }
+  if (hs && !reduce && !hsMobile.matches) {
     var hsSticky = hs.querySelector(".hscroll-sticky");
     var hsStage = hs.querySelector(".hscroll-stage");
     var hsTrack = hs.querySelector(".hscroll-track");

@@ -630,3 +630,11 @@ html, body { overflow-x: clip; }
 .ph--video video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
 .ph--video { padding: 0; }
 @media (max-width: 760px) { .pair .ph--video { aspect-ratio: 464 / 262; } }
+
+/* About photos on phones (and with reduced motion): simple stack, all in the same format */
+.hscroll:not(.is-driven) .hscroll-stage { height: auto; }
+.hscroll:not(.is-driven) .hscroll-track { flex-direction: column; align-items: stretch; height: auto; overflow: visible; gap: 16px; padding: 0 var(--gutter); }
+.hscroll:not(.is-driven) .hs-item { width: 100% !important; margin: 0; align-self: stretch !important; transform: none !important; }
+.hscroll:not(.is-driven) .hs-frame { width: 100% !important; height: auto !important; aspect-ratio: 4 / 3; }
+.hscroll:not(.is-driven) .hs-frame img { width: 100%; height: 100%; margin: 0; transform: none !important; }
+.hscroll:not(.is-driven) .hscroll-intro { margin-bottom: 40px; }
