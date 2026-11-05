@@ -20,14 +20,14 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/d-din-pro-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/d-din-pro-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=202611030922">
+<link rel="stylesheet" href="assets/css/style.css?v=202611051344">
 <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
 <a class="logo" href="index.html" aria-label="87artspace – home">
-  <img src="assets/img/logo.svg" alt="87artspace" width="182" height="174">
+  <img src="assets/img/logo.svg" alt="87artspace" width="182" height="174" fetchpriority="high">
 </a>
 
 <header class="site-header">
@@ -62,7 +62,7 @@
     <div class="ex-intro">
       <figure class="ex-poster reveal">
         <button type="button" class="lb-open" data-src="assets/img/events/beirat-bw/bbw-01.jpg" aria-label="Enlarge photo">
-          <img src="assets/img/events/beirat-bw/bbw-01.jpg" alt="Beirat-BW banner at the entrance, seminar tables in the space behind" width="1200" height="1600">
+          <img src="assets/img/events/beirat-bw/bbw-01.jpg" srcset="assets/img/events/beirat-bw/bbw-01-800.jpg 800w, assets/img/events/beirat-bw/bbw-01.jpg 1200w" sizes="(max-width: 760px) 100vw, 60vw" alt="Beirat-BW banner at the entrance, seminar tables in the space behind" width="1200" height="1600">
         </button>
       </figure>
       <div class="ex-text reveal" data-delay="1">
@@ -78,9 +78,9 @@
 
     <h2 class="label center" style="margin:120px 0 32px">Impressions</h2>
     <div class="masonry masonry--row">
-      <button type="button" class="lb-open reveal" data-src="assets/img/events/beirat-bw/bbw-02.jpg"><img src="assets/img/events/beirat-bw/bbw-02.jpg" alt="Paintings by Sante Muro next to the Beirat-BW banner and the seminar room" loading="lazy" width="1600" height="1200"></button>
-      <button type="button" class="lb-open reveal" data-src="assets/img/events/beirat-bw/bbw-03.jpg"><img src="assets/img/events/beirat-bw/bbw-03.jpg" alt="Banner and seminar tables with yellow folders" loading="lazy" width="1200" height="1600"></button>
-      <button type="button" class="lb-open reveal" data-src="assets/img/events/beirat-bw/bbw-04.jpg"><img src="assets/img/events/beirat-bw/bbw-04.jpg" alt="Standing tables and coffee bar by the window" loading="lazy" width="1600" height="1406"></button>
+      <button type="button" class="lb-open reveal" data-src="assets/img/events/beirat-bw/bbw-02.jpg"><img src="assets/img/events/beirat-bw/bbw-02.jpg" srcset="assets/img/events/beirat-bw/bbw-02-800.jpg 800w, assets/img/events/beirat-bw/bbw-02.jpg 1600w" sizes="(max-width: 760px) 100vw, 60vw" alt="Paintings by Sante Muro next to the Beirat-BW banner and the seminar room" loading="lazy" width="1600" height="1200"></button>
+      <button type="button" class="lb-open reveal" data-src="assets/img/events/beirat-bw/bbw-03.jpg"><img src="assets/img/events/beirat-bw/bbw-03.jpg" srcset="assets/img/events/beirat-bw/bbw-03-800.jpg 800w, assets/img/events/beirat-bw/bbw-03.jpg 1200w" sizes="(max-width: 760px) 100vw, 60vw" alt="Banner and seminar tables with yellow folders" loading="lazy" width="1200" height="1600"></button>
+      <button type="button" class="lb-open reveal" data-src="assets/img/events/beirat-bw/bbw-04.jpg"><img src="assets/img/events/beirat-bw/bbw-04.jpg" srcset="assets/img/events/beirat-bw/bbw-04-800.jpg 800w, assets/img/events/beirat-bw/bbw-04.jpg 1600w" sizes="(max-width: 760px) 100vw, 60vw" alt="Standing tables and coffee bar by the window" loading="lazy" width="1600" height="1406"></button>
     </div>
     <div class="back-bottom"><a class="btn" href="archive.html" data-back>Back to archive</a></div>
   </div>
@@ -106,6 +106,6 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=202611030921"></script>
+<script src="assets/js/main.js?v=202611051344"></script>
 </body>
 </html>

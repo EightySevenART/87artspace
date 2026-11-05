@@ -20,14 +20,14 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/d-din-pro-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/d-din-pro-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=202611030922">
+<link rel="stylesheet" href="assets/css/style.css?v=202611051344">
 <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
 <a class="logo" href="index.html" aria-label="87artspace – home">
-  <img src="assets/img/logo.svg" alt="87artspace" width="182" height="174">
+  <img src="assets/img/logo.svg" alt="87artspace" width="182" height="174" fetchpriority="high">
 </a>
 
 <header class="site-header">
@@ -71,7 +71,7 @@
       <div class="cards">
         <article class="card reveal" data-type="exhibition">
           <a class="card-link" href="beyond-the-frame.html">
-            <div class="ph"><img loading="lazy" src="assets/img/exhibitions/beyond-the-frame/btf-13.jpg" alt="Poster: Beyond the Frame, Sante Muro" width="1090" height="1434"></div>
+            <div class="ph"><img loading="lazy" src="assets/img/exhibitions/beyond-the-frame/btf-13.jpg" srcset="assets/img/exhibitions/beyond-the-frame/btf-13-800.jpg 800w, assets/img/exhibitions/beyond-the-frame/btf-13.jpg 1090w" sizes="(max-width: 760px) 100vw, 60vw" alt="Poster: Beyond the Frame, Sante Muro" width="1090" height="1434"></div>
             <p class="card-type">Exhibition</p>
             <h3>Beyond the Frame</h3>
           </a>
@@ -80,7 +80,7 @@
         </article>
         <article class="card reveal" data-type="event">
           <a class="card-link" href="beirat-bw.html">
-            <div class="ph"><img loading="lazy" src="assets/img/events/beirat-bw/bbw-01.jpg" alt="Beirat-BW e.V. seminar at 87artspace" width="1200" height="1600"></div>
+            <div class="ph"><img loading="lazy" src="assets/img/events/beirat-bw/bbw-01.jpg" srcset="assets/img/events/beirat-bw/bbw-01-800.jpg 800w, assets/img/events/beirat-bw/bbw-01.jpg 1200w" sizes="(max-width: 760px) 100vw, 60vw" alt="Beirat-BW e.V. seminar at 87artspace" width="1200" height="1600"></div>
             <p class="card-type">Event</p>
             <h3>Beirat-BW e.V.</h3>
           </a>
@@ -109,6 +109,6 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=202611030921"></script>
+<script src="assets/js/main.js?v=202611051344"></script>
 </body>
 </html>
