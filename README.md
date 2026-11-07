@@ -2,6 +2,17 @@
 
 Website of 87artspace. Plain HTML/CSS/JS, hosted with GitHub Pages (no build step).
 
+## Languages (EN + DE)
+
+English is the default and the source. The German site in `/de/` is generated:
+
+1. Change the English page in the root.
+2. Run `python3 tools/build_de.py`.
+3. It lists every new English text as MISSING: add the German version to `tools/i18n_de.py` and run it again.
+
+Never edit files in `/de/` by hand, they are overwritten. Every change goes into both languages.
+JS texts (form messages, mail sheet) are translated in the `DE_TXT` table at the top of `assets/js/main.js`.
+
 ## Structure
 
 - `index.html` – home: logo intro, current exhibition, the space, contact + imprint

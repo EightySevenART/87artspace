@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://87artspace.com/</loc><lastmod>2026-10-28</lastmod></url>
-  <url><loc>https://87artspace.com/about.html</loc><lastmod>2026-10-28</lastmod></url>
-  <url><loc>https://87artspace.com/archive.html</loc><lastmod>2026-10-28</lastmod></url>
-  <url><loc>https://87artspace.com/beyond-the-frame.html</loc><lastmod>2026-10-28</lastmod></url>
-  <url><loc>https://87artspace.com/fake-fake.html</loc><lastmod>2026-10-28</lastmod></url>
-  <url><loc>https://87artspace.com/beirat-bw.html</loc><lastmod>2026-10-28</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://87artspace.com/</loc><lastmod>2026-11-07</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://87artspace.com/"/><xhtml:link rel="alternate" hreflang="de" href="https://87artspace.com/de/"/></url>
+  <url><loc>https://87artspace.com/de/</loc><lastmod>2026-11-07</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://87artspace.com/"/><xhtml:link rel="alternate" hreflang="de" href="https://87artspace.com/de/"/></url>
+  <url><loc>https://87artspace.com/about.html</loc><lastmod>2026-11-07</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://87artspace.com/about.html"/><xhtml:link rel="alternate" hreflang="de" href="https://87artspace.com/de/about.html"/></url>
+  <url><loc>https://87artspace.com/de/about.html</loc><lastmod>2026-11-07</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://87artspace.com/about.html"/><xhtml:link rel="alternate" hreflang="de" href="https://87artspace.com/de/about.html"/></url>
+  <url><loc>https://87artspace.com/archive.html</loc><lastmod>2026-11-07</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://87artspace.com/archive.html"/><xhtml:link rel="alternate" hreflang="de" href="https://87artspace.com/de/archive.html"/></url>
+  <url><loc>https://87artspace.com/de/archive.html</loc><lastmod>2026-11-07</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://87artspace.com/archive.html"/><xhtml:link rel="alternate" hreflang="de" href="https://87artspace.com/de/archive.html"/></url>
+  <url><loc>https://87artspace.com/beyond-the-frame.html</loc><lastmod>2026-11-07</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://87artspace.com/beyond-the-frame.html"/><xhtml:link rel="alternate" hreflang="de" href="https://87artspace.com/de/beyond-the-frame.html"/></url>
+  <url><loc>https://87artspace.com/de/beyond-the-frame.html</loc><lastmod>2026-11-07</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://87artspace.com/beyond-the-frame.html"/><xhtml:link rel="alternate" hreflang="de" href="https://87artspace.com/de/beyond-the-frame.html"/></url>
+  <url><loc>https://87artspace.com/fake-fake.html</loc><lastmod>2026-11-07</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://87artspace.com/fake-fake.html"/><xhtml:link rel="alternate" hreflang="de" href="https://87artspace.com/de/fake-fake.html"/></url>
+  <url><loc>https://87artspace.com/de/fake-fake.html</loc><lastmod>2026-11-07</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://87artspace.com/fake-fake.html"/><xhtml:link rel="alternate" hreflang="de" href="https://87artspace.com/de/fake-fake.html"/></url>
+  <url><loc>https://87artspace.com/beirat-bw.html</loc><lastmod>2026-11-07</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://87artspace.com/beirat-bw.html"/><xhtml:link rel="alternate" hreflang="de" href="https://87artspace.com/de/beirat-bw.html"/></url>
+  <url><loc>https://87artspace.com/de/beirat-bw.html</loc><lastmod>2026-11-07</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://87artspace.com/beirat-bw.html"/><xhtml:link rel="alternate" hreflang="de" href="https://87artspace.com/de/beirat-bw.html"/></url>
 </urlset>

@@ -2,6 +2,28 @@
 (function () {
   var root = document.documentElement;
 
+  /* ---------- Language: German pages live in /de/ (<html lang="de">), English is the default ---------- */
+  var DE_TXT = {
+    "Read more": "Weiterlesen", "Read less": "Weniger anzeigen",
+    "No events yet. Stay tuned.": "Noch keine Events. Bleib dran.",
+    "No exhibitions yet. Stay tuned.": "Noch keine Ausstellungen. Bleib dran.",
+    "Please enter a valid email address.": "Bitte gib eine gültige E-Mail-Adresse ein.",
+    "Sign-up opens soon. Until then, write to us at info@87artspace.com.": "Die Anmeldung öffnet bald. Bis dahin schreib uns an info@87artspace.com.",
+    "Almost done: please confirm your sign-up in the email we just sent you.": "Fast geschafft: Bitte bestätige deine Anmeldung in der E-Mail, die wir dir gerade geschickt haben.",
+    "Something went wrong. Please try again.": "Da ist etwas schiefgelaufen. Bitte versuch es noch einmal.",
+    "Close": "Schließen", "Book the space": "Space buchen",
+    "Please choose what you are planning.": "Bitte wähle aus, was du planst.",
+    "privacy note": "Datenschutzhinweis", "Please complete: ": "Bitte ausfüllen: ",
+    "Preview: the form is not connected yet. On the live site this request would now be sent to us.": "Vorschau: Das Formular ist noch nicht verbunden. Auf der Live-Seite würde die Anfrage jetzt an uns gesendet.",
+    "Something went wrong. Please try again or write to us at info@87artspace.com.": "Da ist etwas schiefgelaufen. Bitte versuch es noch einmal oder schreib uns an info@87artspace.com.",
+    "Write us an email": "Schreib uns eine E-Mail", "Write us": "Schreib uns",
+    "Copy address": "Adresse kopieren", "Copied ✓": "Kopiert ✓",
+    "Open in Gmail": "In Gmail öffnen", "Open in Outlook": "In Outlook öffnen", "Open mail app": "Mail-App öffnen",
+    "Email address copied: ": "E-Mail-Adresse kopiert: ",
+    "Turn sound on": "Ton einschalten", "Turn sound off": "Ton ausschalten"
+  };
+  function L(t) { return (root.lang === "de" && DE_TXT[t]) || t; }
+
   /* ---------- Preview-only features: visible under /preview/, hidden on the live site ---------- */
   if (/^\/preview(\/|$)/.test(location.pathname)) {
     root.classList.add("is-preview");
@@ -194,7 +216,7 @@
       var open = !box.classList.contains("is-open");
       box.classList.toggle("is-open", open);
       btn.setAttribute("aria-expanded", open);
-      btn.querySelector("span").textContent = open ? "Read less" : "Read more";
+      btn.querySelector("span").textContent = L(open ? "Read less" : "Read more");
       if (!open) {
         var top = box.closest("section").getBoundingClientRect().top;
         if (top < 0) box.closest("section").scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
@@ -225,7 +247,7 @@
         y.hidden = !y.querySelector(".card[data-type]:not([hidden])");
       });
       if (empty) {
-        empty.textContent = "No " + (f === "event" ? "events" : "exhibitions") + " yet. Stay tuned.";
+        empty.textContent = L("No " + (f === "event" ? "events" : "exhibitions") + " yet. Stay tuned.");
         empty.hidden = cards.some(function (c) { return !c.hidden; });
       }
     });
@@ -377,18 +399,18 @@
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var email = form.querySelector('input[type="email"]');
-      if (!email.value || !email.checkValidity()) { say("Please enter a valid email address."); email.focus(); return; }
+      if (!email.value || !email.checkValidity()) { say(L("Please enter a valid email address.")); email.focus(); return; }
       var url = form.getAttribute("data-endpoint");
-      if (!url) { say("Sign-up opens soon. Until then, write to us at info@87artspace.com."); return; }
+      if (!url) { say(L("Sign-up opens soon. Until then, write to us at info@87artspace.com.")); return; }
       var btn = form.querySelector("button"); btn.disabled = true;
       fetch(url, { method: "POST", mode: "no-cors", body: new FormData(form) })
         .then(function () {
           form.hidden = true; if (note) note.hidden = true;
           var steps = form.parentNode.querySelector(".nl-steps"); if (steps) steps.hidden = true;
           var done = form.parentNode.querySelector(".nl-done");
-          if (done) { done.hidden = false; } else { say("Almost done: please confirm your sign-up in the email we just sent you."); }
+          if (done) { done.hidden = false; } else { say(L("Almost done: please confirm your sign-up in the email we just sent you.")); }
         })
-        .catch(function () { btn.disabled = false; say("Something went wrong. Please try again."); });
+        .catch(function () { btn.disabled = false; say(L("Something went wrong. Please try again.")); });
     });
   });
 
@@ -399,7 +421,7 @@
     var setBk = function (open, scroll) {
       bkPanel.classList.toggle("is-open", open);
       bkBtn.setAttribute("aria-expanded", open);
-      bkBtn.querySelector("span").textContent = open ? "Close" : "Book the space";
+      bkBtn.querySelector("span").textContent = L(open ? "Close" : "Book the space");
       if (open && scroll) setTimeout(function () { bkPanel.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" }); }, 120);
     };
     bkBtn.addEventListener("click", function () { setBk(!bkPanel.classList.contains("is-open"), true); });
@@ -453,7 +475,7 @@
     function say(t) { msg.textContent = t; msg.hidden = false; }
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      if (!form.querySelector('input[name="Type"]:checked')) { say("Please choose what you are planning."); form.querySelector(".bk-tiles").scrollIntoView({ block: "center", behavior: "smooth" }); return; }
+      if (!form.querySelector('input[name="Type"]:checked')) { say(L("Please choose what you are planning.")); form.querySelector(".bk-tiles").scrollIntoView({ block: "center", behavior: "smooth" }); return; }
       form.querySelectorAll(".is-invalid").forEach(function (x) { x.classList.remove("is-invalid"); });
       var bads = [].slice.call(form.querySelectorAll("input:invalid, textarea:invalid"));
       if (bads.length) {
@@ -461,19 +483,19 @@
         bads.forEach(function (b) {
           var wrap = b.closest(".bk-field, .bk-consent");
           if (wrap) wrap.classList.add("is-invalid");
-          var lab = b.type === "checkbox" ? "privacy note" : ((wrap && wrap.querySelector("span")) ? wrap.querySelector("span").textContent.replace("*", "").trim() : b.name);
+          var lab = b.type === "checkbox" ? L("privacy note") : ((wrap && wrap.querySelector("span")) ? wrap.querySelector("span").textContent.replace("*", "").trim() : b.name);
           if (names.indexOf(lab) < 0) names.push(lab);
         });
-        say("Please complete: " + names.join(", ") + ".");
+        say(L("Please complete: ") + names.join(", ") + ".");
         bads[0].focus();
         return;
       }
       var url = form.getAttribute("data-endpoint");
-      if (!url) { say("Preview: the form is not connected yet. On the live site this request would now be sent to us."); return; }
+      if (!url) { say(L("Preview: the form is not connected yet. On the live site this request would now be sent to us.")); return; }
       var btn = form.querySelector('button[type="submit"]'); btn.disabled = true; msg.hidden = true;
       fetch(url, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) })
         .then(function (r) { if (!r.ok) throw new Error(r.status); form.hidden = true; done.hidden = false; done.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" }); })
-        .catch(function () { btn.disabled = false; say("Something went wrong. Please try again or write to us at info@87artspace.com."); });
+        .catch(function () { btn.disabled = false; say(L("Something went wrong. Please try again or write to us at info@87artspace.com.")); });
     });
   });
 
@@ -510,17 +532,17 @@
     if (!sheet) {
       sheet = document.createElement("div");
       sheet.className = "mail-sheet";
-      sheet.setAttribute("role", "dialog"); sheet.setAttribute("aria-modal", "true"); sheet.setAttribute("aria-label", "Write us an email");
+      sheet.setAttribute("role", "dialog"); sheet.setAttribute("aria-modal", "true"); sheet.setAttribute("aria-label", L("Write us an email"));
       sheet.innerHTML =
         '<div class="mail-card">' +
-          '<button type="button" class="mail-x" aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>' +
-          '<p class="label">Write us</p>' +
+          '<button type="button" class="mail-x" aria-label="' + L("Close") + '"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>' +
+          '<p class="label">' + L("Write us") + '</p>' +
           '<p class="mail-addr"></p>' +
           '<div class="mail-actions">' +
-            '<button type="button" class="btn btn--solid mail-copy">Copy address</button>' +
-            '<a class="btn mail-gmail" target="_blank" rel="noopener">Open in Gmail</a>' +
-            '<a class="btn mail-outlook" target="_blank" rel="noopener">Open in Outlook</a>' +
-            '<a class="btn mail-app">Open mail app</a>' +
+            '<button type="button" class="btn btn--solid mail-copy">' + L("Copy address") + '</button>' +
+            '<a class="btn mail-gmail" target="_blank" rel="noopener">' + L("Open in Gmail") + '</a>' +
+            '<a class="btn mail-outlook" target="_blank" rel="noopener">' + L("Open in Outlook") + '</a>' +
+            '<a class="btn mail-app">' + L("Open mail app") + '</a>' +
           '</div>' +
         '</div>';
       document.body.appendChild(sheet);
@@ -532,8 +554,8 @@
     sheet.querySelector(".mail-outlook").href = outlook;
     sheet.querySelector(".mail-app").href = mailto;
     var cp = sheet.querySelector(".mail-copy");
-    cp.textContent = "Copy address";
-    cp.onclick = function () { copyText(addr).then(function () { cp.textContent = "Copied ✓"; showToast("Email address copied: " + addr); }, function () {}); };
+    cp.textContent = L("Copy address");
+    cp.onclick = function () { copyText(addr).then(function () { cp.textContent = L("Copied ✓"); showToast(L("Email address copied: ") + addr); }, function () {}); };
     sheet.classList.add("is-on");
     document.addEventListener("keydown", escSheet);
     setTimeout(function () { cp.focus(); }, 50);
@@ -546,7 +568,7 @@
     var m = href.match(/[?&]subject=([^&]*)/);
     var subject = m ? decodeURIComponent(m[1]) : "";
     if (touch) {
-      copyText(addr).then(function () { showToast("Email address copied: " + addr); }, function () {});
+      copyText(addr).then(function () { showToast(L("Email address copied: ") + addr); }, function () {});
       return; /* phone: let the mail app open */
     }
     e.preventDefault();
@@ -561,7 +583,7 @@
       v.muted = !v.muted;
       if (!v.muted) v.play();
       b.setAttribute("aria-pressed", !v.muted);
-      b.setAttribute("aria-label", v.muted ? "Turn sound on" : "Turn sound off");
+      b.setAttribute("aria-label", L(v.muted ? "Turn sound on" : "Turn sound off"));
     });
     /* only play while visible */
     if ("IntersectionObserver" in window) {
