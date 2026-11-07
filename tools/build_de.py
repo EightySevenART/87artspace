@@ -6,6 +6,7 @@ English is the source. After changing an English page run:
 New or changed English texts are listed as MISSING: add them to
 tools/i18n_de.py (English -> German) and run the script again.
 Never edit files in /de/ by hand, they are overwritten.
+Headings (h1-h3) stay English in both languages.
 """
 import html, os, re, sys
 sys.path.insert(0, os.path.dirname(__file__))
@@ -50,8 +51,10 @@ def build(page):
         t = tr(val, page)
         return m.group(0) if t is None else f'{name}={q}{html.escape(t, quote=True)}{q}'
     s = re.sub(r'\b(alt|placeholder|aria-label|title|content|data-label)=(")([^"]*)"', attr, s)
-    # text nodes (outside script/style/imprint/privacy, which are German already)
-    parts = re.split(r'(<script\b.*?</script>|<style\b.*?</style>|<div class="(?:imprint|privacy)" lang="de">.*?</details>)', s, flags=re.S)
+    # text nodes (outside script/style/imprint/privacy, which are German already,
+    # and outside headings h1-h3, which stay English on purpose)
+    parts = re.split(r'(<h([1-3])\b.*?</h\2>|<script\b.*?</script>|<style\b.*?</style>|<div class="(?:imprint|privacy)" lang="de">.*?</details>)', s, flags=re.S)
+    parts = [x for j, x in enumerate(parts) if j % 3 != 2]  # drop the h-level group
     for i in range(0, len(parts), 2):
         def text(m):
             raw = m.group(1)
