@@ -182,6 +182,7 @@ T = {
 # --- traces of motion (German = artist-approved original text, verbatim)
 "Featuring works by Steffen Köhl":"Mit Arbeiten von Steffen Köhl",
 "28.11.2026, 3–8 pm":"28.11.2026, 15–20 Uhr",
+"28.11.2026 – 10.01.2027 · coming soon":"28.11.2026 – 10.01.2027 · demnächst",
 "28.11.2026 – 10.01.2027 · on view now":"28.11.2026 – 10.01.2027 · aktuell zu sehen",
 "22.10. – 21.11.2026":"22.10. – 21.11.2026",
 "Artwork":"Werk","Steffen Köhl in front of one of his paintings":"Steffen Köhl vor einem seiner Gemälde","Painting by Steffen Köhl: a racing car rushing towards the viewer":"Gemälde von Steffen Köhl: ein Rennwagen, der auf den Betrachter zurast","Portrait of Steffen Köhl":"Porträt von Steffen Köhl","Steffen Köhl painting in his studio":"Steffen Köhl beim Malen in seinem Atelier","Poster":"Plakat","Portrait":"Porträt",
