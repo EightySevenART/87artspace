@@ -5,3 +5,6 @@
   Subject (always the same): "87artspace | You’re invited". Sender: 87artspace <info@87artspace.com>.
 - `double-optin.html` – confirmation email used by the Brevo form "Website – Get invited" (button link `{{ doubleoptin }}`),
   redirect after confirmation: https://87artspace.com/confirmed.html
+
+- `invitation-traces-of-motion.html` – German invitation for Traces of Motion (Steffen Köhl), artist-approved text.
+  Images are served from assets/img/exhibitions/traces-of-motion/ (already on main).
