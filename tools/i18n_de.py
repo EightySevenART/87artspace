@@ -184,7 +184,7 @@ T = {
 "28.11.2026, 3–8 pm":"28.11.2026, 15–20 Uhr",
 "28.11.2026 – 10.01.2027 · on view now":"28.11.2026 – 10.01.2027 · aktuell zu sehen",
 "22.10. – 21.11.2026":"22.10. – 21.11.2026",
-"Artwork":"Werk","Portrait of Steffen Köhl":"Porträt von Steffen Köhl","Steffen Köhl painting in his studio":"Steffen Köhl beim Malen in seinem Atelier","Poster":"Plakat","Portrait":"Porträt",
+"Artwork":"Werk","Painting by Steffen Köhl: a racing car rushing towards the viewer":"Gemälde von Steffen Köhl: ein Rennwagen, der auf den Betrachter zurast","Portrait of Steffen Köhl":"Porträt von Steffen Köhl","Steffen Köhl painting in his studio":"Steffen Köhl beim Malen in seinem Atelier","Poster":"Plakat","Portrait":"Porträt",
 "From the precision of automotive design to the freedom of artistic expression. Meet the artist in person at the vernissage.":"Von der Präzision des Automobildesigns zur Freiheit des künstlerischen Ausdrucks. Lernen Sie den Künstler bei der Vernissage persönlich kennen.",
 "Traces of Motion: paintings by Steffen Köhl, former head of Mercedes-Benz Advanced Design, at 87artspace, Stuttgart, 28.11.2026 – 10.01.2027. Vernissage 28 November, 3–8 pm.":"Traces of Motion: Gemälde von Steffen Köhl, ehemals Leiter des Advanced Design bei Mercedes-Benz, im 87artspace, Stuttgart, 28.11.2026 – 10.01.2027. Vernissage am 28. November, 15–20 Uhr.",
 "Painted movements, painted narratives. From the precision of automotive design to the freedom of artistic expression.":"Painted Movements – Painted Narratives. Von der Präzision des Automobildesigns zur Freiheit des künstlerischen Ausdrucks.",
