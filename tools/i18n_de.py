@@ -182,6 +182,7 @@ T = {
 # --- traces of motion (German = artist-approved original text, verbatim)
 "Featuring works by Steffen Köhl":"Mit Arbeiten von Steffen Köhl",
 "28.11.2026, 3–8 pm":"28.11.2026, 15–20 Uhr",
+"More about the exhibition and the artist soon.":"Mehr zur Ausstellung und zum Künstler in Kürze.",
 "28.11.2026 – 10.01.2027 · coming soon":"28.11.2026 – 10.01.2027 · demnächst",
 "28.11.2026 – 10.01.2027 · on view now":"28.11.2026 – 10.01.2027 · aktuell zu sehen",
 "22.10. – 21.11.2026":"22.10. – 21.11.2026",
