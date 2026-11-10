@@ -179,17 +179,35 @@ T = {
 "You will no longer receive our vernissage invitations.":"Sie erhalten keine Vernissage-Einladungen mehr von uns.",
 "We hope to see you at 87artspace anyway.":"Wir hoffen, Sie trotzdem im 87artspace zu sehen.",
 "Sign up again":"Wieder anmelden",
+# --- traces of motion
+"Featuring works by Steffen Köhl":"Mit Arbeiten von Steffen Köhl",
+"28.11.2026, 3–8 pm":"28.11.2026, 15–20 Uhr",
+"28.11.2026 – 10.01.2027 · on view now":"28.11.2026 – 10.01.2027 · aktuell zu sehen",
+"22.10. – 21.11.2026":"22.10. – 21.11.2026",
+"Artwork":"Werk","Poster":"Plakat","Portrait":"Porträt",
+"From the precision of automotive design to the freedom of artistic expression. Meet the artist in person at the vernissage.":"Von der Präzision des Automobildesigns zur Freiheit des künstlerischen Ausdrucks. Lernen Sie den Künstler bei der Vernissage persönlich kennen.",
+"Traces of Motion: paintings by Steffen Köhl, former head of Mercedes-Benz Advanced Design, at 87artspace, Stuttgart, 28.11.2026 – 10.01.2027. Vernissage 28 November, 3–8 pm.":"Traces of Motion: Gemälde von Steffen Köhl, ehemals Leiter des Advanced Design bei Mercedes-Benz, im 87artspace, Stuttgart, 28.11.2026 – 10.01.2027. Vernissage am 28. November, 15–20 Uhr.",
+"Painted movements, painted narratives. From the precision of automotive design to the freedom of artistic expression.":"Painted Movements – Painted Narratives. Von der Präzision des Automobildesigns zur Freiheit des künstlerischen Ausdrucks.",
+"Steffen Köhl explores the emotional interplay of form, body and material in motion. His works translate decades of creative experience into a distinctive visual language in which dynamic compositions and painted narratives come to life.":"Steffen Köhl erkundet das emotionale Zusammenspiel von Form, Körper und Material in Bewegung. Seine Werke übersetzen jahrzehntelange kreative Erfahrung in eine unverwechselbare Bildsprache, in der dynamische Kompositionen und malerische Erzählungen lebendig werden.",
+"His naturalistic paintings bring hidden layers to the fore and surprise with their own view of people, machines and more.":"Seine naturalistischen Darstellungen bringen manch Hintergründiges in den Vordergrund und überraschen mit ihrem eigenen Blick auf Mensch, Maschine und mehr.",
+"An afternoon in dialogue with the artist: Steffen Köhl will be present at the vernissage and share insights into his inspirations and the stories behind his works.":"Ein Nachmittag im Dialog mit dem Künstler: Steffen Köhl ist bei der Vernissage persönlich anwesend und gibt Einblicke in seine Inspirationen und die Geschichten hinter seinen Werken.",
+"Steffen Köhl studied industrial and automotive design at the Fachhochschule für Gestaltung in Pforzheim before beginning his international career at Mercedes-Benz Design. For more than three decades he played a key role in shaping numerous vehicles.":"Steffen Köhl studierte Industrie- und Automobildesign an der Fachhochschule für Gestaltung in Pforzheim, bevor er seine internationale Karriere bei Mercedes-Benz Design begann. Über mehr als drei Jahrzehnte prägte er maßgeblich die Gestaltung zahlreicher Fahrzeuge.",
+"From 2009 to 2024 he led Mercedes-Benz Advanced Design, where he was also responsible for creative projects and collaborations at the intersection of design, art and culture, including with the Pinakothek der Moderne in Munich, Berlin Fashion Week and Art Basel Miami Beach.":"Von 2009 bis 2024 leitete er den Advanced-Design-Bereich von Mercedes-Benz und verantwortete dort auch Kreativprojekte und Kooperationen an der Schnittstelle von Design, Kunst und Kultur, unter anderem mit der Pinakothek der Moderne in München, der Berlin Fashion Week und der Art Basel Miami Beach.",
+"Painting and illustration remained his own passion throughout those years, one he kept developing. Today his distinctive works reflect this enthusiasm for aesthetics, movement and visual storytelling.":"Malerei und Illustration blieben all die Jahre seine eigene Leidenschaft, die er stets weiterentwickelte. Heute spiegeln seine unverwechselbaren Arbeiten diese Begeisterung für Ästhetik, Bewegung und visuelles Erzählen wider.",
+"His artistic roots go back generations: Steffen Köhl is the great-grandson of the German painter Otto Ewel and the great-nephew of the sculptor Maria Ewel.":"Seine künstlerischen Wurzeln reichen über Generationen zurück: Steffen Köhl ist der Urenkel des deutschen Malers Otto Ewel und Großneffe der Bildhauerin Maria Ewel.",
+"All exhibitions and events at 87artspace in Stuttgart, including Traces of Motion by Steffen Köhl, Beyond the Frame by Sante Muro and FAKE FAKE by Georg Barinov.":"Alle Ausstellungen und Events im 87artspace in Stuttgart, darunter Traces of Motion von Steffen Köhl, Beyond the Frame von Sante Muro und FAKE FAKE von Georg Barinov.",
 }
 # substrings inside JSON-LD scripts
 LD = {
 "Art space in Stuttgart's Waldbaur-Areal: exhibitions, events and a space to rent for art, culture and fashion.":"Art Space im Stuttgarter Waldbaur-Areal: Ausstellungen, Events und ein Space zum Mieten für Kunst, Kultur und Mode.",
 "Paintings by Sante Muro at 87artspace, Stuttgart.":"Gemälde von Sante Muro im 87artspace, Stuttgart.",
+"Paintings by Steffen Köhl at 87artspace, Stuttgart.":"Gemälde von Steffen Köhl im 87artspace, Stuttgart.",
 "Works by Georg Barinov at 87artspace, Stuttgart.":"Arbeiten von Georg Barinov im 87artspace, Stuttgart.",
 }
 # same in both languages (names, addresses, technical values)
 KEEP = ["summary_large_image","87artspace","DE","EN","EIGHTYSEVEN","Beyond the Frame","Rotebühlstraße 87, Stuttgart",
 "Vernissage","Rotebühlstraße 87 · 70178 Stuttgart","info@87artspace.com","Instagram","© 2026 87artspace","#0e0e0e",
 "Events","Event","Pop-up / Launch","Workshop / Talk","Seminar / Meeting","Rotebühlstraße 87","70178 Stuttgart",
-"block.","Title","Artist / short subtitle","DD.MM. – DD.MM.YYYY","Sante Muro","Beirat-BW e.V.","FAKE FAKE","Georg Barinov",
+"block.","Title","Artist / short subtitle","DD.MM. – DD.MM.YYYY","Sante Muro","Steffen Köhl","Traces of Motion","Traces of Motion – Steffen Köhl – 87artspace Stuttgart","28.11.2026 – 10.01.2027","Beirat-BW e.V.","FAKE FAKE","Georg Barinov",
 "Beyond the Frame – Sante Muro – 87artspace Stuttgart","FAKE FAKE – Georg Barinov – 87artspace Stuttgart","· Event · 2026","noindex"]
 T.update({k: k for k in KEEP})

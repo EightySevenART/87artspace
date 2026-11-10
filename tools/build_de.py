@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from i18n_de import T, LD
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAGES = ["index.html", "about.html", "archive.html", "beyond-the-frame.html",
+PAGES = ["index.html", "about.html", "archive.html", "traces-of-motion.html", "beyond-the-frame.html",
          "fake-fake.html", "beirat-bw.html", "confirmed.html", "unsubscribed.html"]
 SITE = "https://87artspace.com/"
 norm = lambda s: re.sub(r"\s+", " ", html.unescape(s)).strip()
