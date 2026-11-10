@@ -1,6 +1,8 @@
 # Publishes the site to GitHub Pages.
 #  - Root (/):        the live site, or the "coming soon" page while site-mode.txt says "maintenance"
 #  - /preview/:       always the current main branch (not indexed by search engines)
+#  - /next/:          the branch "next" = the upcoming version, if it exists (not indexed).
+#                      After pushing to "next", run this workflow manually (Actions > Deploy site > Run workflow).
 name: Deploy site
 
 on:
@@ -32,6 +34,9 @@ jobs:
         with:
           ref: maintenance
           path: maintenance
+      - name: Check out upcoming version (branch "next", optional)
+        run: |
+          git clone --depth 1 --branch next "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" next 2>/dev/null || echo "No branch next"
       - name: Assemble site
         run: |
           MODE=$(tr -d '[:space:]' < main/site-mode.txt 2>/dev/null || echo live)
@@ -39,8 +44,10 @@ jobs:
           mkdir -p out/preview
           if [ "$MODE" = "maintenance" ]; then cp -r maintenance/. out/; else cp -r main/. out/; fi
           cp -r main/. out/preview/
-          rm -rf out/.git out/.github out/preview/.git out/preview/.github
+          if [ -d next ]; then mkdir -p out/next && cp -r next/. out/next/; fi
+          rm -rf out/.git out/.github out/preview/.git out/preview/.github out/next/.git out/next/.github
           find out/preview -name '*.html' -exec sed -i 's#<head>#<head>\n<meta name="robots" content="noindex">#' {} +
+          if [ -d out/next ]; then find out/next -name '*.html' -exec sed -i 's#<head>#<head>\n<meta name="robots" content="noindex">#' {} +; fi
           touch out/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
