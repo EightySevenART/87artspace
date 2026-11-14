@@ -8,3 +8,4 @@
 
 - `invitation-traces-of-motion.html` – German invitation for Traces of Motion (Steffen Köhl), artist-approved text.
   Images are served from assets/img/exhibitions/traces-of-motion/ (already on main).
+- `finissage-beyond-the-frame.html` – German finissage invitation for Beyond the Frame (21.11.2026) with a teaser for Traces of Motion.
