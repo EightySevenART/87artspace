@@ -216,3 +216,13 @@ KEEP = ["summary_large_image","Painted Movements – Painted Narratives","87arts
 "block.","Title","Artist / short subtitle","DD.MM. – DD.MM.YYYY","Sante Muro","Steffen Köhl","Traces of Motion","Traces of Motion – Steffen Köhl – 87artspace Stuttgart","28.11.2026 – 10.01.2027","Beirat-BW e.V.","FAKE FAKE","Georg Barinov",
 "Beyond the Frame – Sante Muro – 87artspace Stuttgart","FAKE FAKE – Georg Barinov – 87artspace Stuttgart","· Event · 2026","noindex"]
 T.update({k: k for k in KEEP})
+T.update({
+"Two paintings: a surfer with tigers and a woman in a bathtub":"Zwei Gemälde: eine Surferin mit Tigern und eine Frau in der Badewanne",
+"Two large paintings with whale, trapeze artist and hummingbird":"Zwei große Gemälde mit Wal, Trapezkünstlerin und Kolibri",
+"Two paintings in the corner: classical bust and tiger in a pool":"Zwei Gemälde in der Ecke: antike Büste und Tiger im Pool",
+"Three paintings on the wall with the artist's name":"Drei Gemälde an der Wand mit dem Namen des Künstlers",
+"Paintings with parrot, pool and tiger in a boat":"Gemälde mit Papagei, Pool und Tiger im Boot",
+"Musician portraits and two paintings with arches":"Musikerporträts und zwei Gemälde mit Bögen",
+"Two portrait paintings stacked on the wall":"Zwei übereinander gehängte Porträtgemälde",
+"Portrait painting in purple and pink":"Porträtgemälde in Lila und Pink",
+})
