@@ -226,3 +226,4 @@ T.update({
 "Two portrait paintings stacked on the wall":"Zwei übereinander gehängte Porträtgemälde",
 "Portrait painting in purple and pink":"Porträtgemälde in Lila und Pink",
 })
+T.update({"Painting by Steffen Köhl: a covered sports car in a hall":"Gemälde von Steffen Köhl: ein verhüllter Sportwagen in einer Halle"})
