@@ -227,3 +227,13 @@ T.update({
 "Portrait painting in purple and pink":"Porträtgemälde in Lila und Pink",
 })
 T.update({"Painting by Steffen Köhl: a covered sports car in a hall":"Gemälde von Steffen Köhl: ein verhüllter Sportwagen in einer Halle"})
+T.update({
+"Selected works":"Selected works",
+"Painting by Steffen Köhl: a man pulling a striped shirt over his head":"Gemälde von Steffen Köhl: ein Mann zieht sich ein gestreiftes Hemd über den Kopf",
+"Painting by Steffen Köhl: a dark classic coupé in light and shadow":"Gemälde von Steffen Köhl: ein dunkles klassisches Coupé in Licht und Schatten",
+"Painting by Steffen Köhl: a woman with a blue bag walking away":"Gemälde von Steffen Köhl: eine Frau mit blauer Tasche, die davongeht",
+"Painting by Steffen Köhl: a diver in flight above the water":"Gemälde von Steffen Köhl: ein Springer im Flug über dem Wasser",
+"Painting by Steffen Köhl: a silver racing car at speed":"Gemälde von Steffen Köhl: ein silberner Rennwagen in voller Fahrt",
+"Painting by Steffen Köhl: a red Porsche 911 half under a cover":"Gemälde von Steffen Köhl: ein roter Porsche 911, halb unter einer Plane",
+"Painting by Steffen Köhl: a woman lifting a towel above her head":"Gemälde von Steffen Köhl: eine Frau hebt ein Handtuch über den Kopf",
+})
